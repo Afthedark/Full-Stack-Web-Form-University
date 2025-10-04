@@ -1,0 +1,46 @@
+# Node modules
+node_modules/
+
+# Dependency directories
+yarn.lock
+package-lock.json
+
+# Build output
+dist/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# OS generated files
+*.swp
+*.swo
+
+# SQL backups
+*.sql
+
+# Images cache
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+!assets/img/
+
+# Misc
+.idea/
+*.iml
+
+# Ignore memory context
+memory_context/
