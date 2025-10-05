@@ -64,6 +64,7 @@
   --color-btn: #00473e;
   --color-btn-text: #fff;
   --color-border: #e0e0e0;
+  --Color-CAJAS-PREGUNTAS: #B0A89F40;
   /* Extras para calendario y tonos */
   --color-text-light: #6b7280;
   --color-text-lighter: #9ca3af;
@@ -216,9 +217,11 @@ h2 {
   width: 100%;
 }
 
-.age-btn {
+
+/* Pantalla 1: sin borde por defecto, solo visible al seleccionar */
+#step-1 .age-btn {
   background: #fff;
-  border: 2px solid var(--color-border);
+  border: 2px solid transparent;
   border-radius: 12px;
   padding: 18px 0;
   font-size: 1rem;
@@ -226,6 +229,11 @@ h2 {
   color: var(--color-primary);
   cursor: pointer;
   transition: border 0.2s, box-shadow 0.2s;
+}
+#step-1 .age-btn.selected,
+#step-1 .age-btn:focus {
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .age-btn.selected,
@@ -394,8 +402,8 @@ h2 {
   align-items: flex-start;
   justify-content: space-between;
   padding: 16px;
-  background: #F9FAFB;
-  border: 2px solid #E5E7EB;
+  background: var(--Color-CAJAS-PREGUNTAS, #B0A89F40);
+  border: 2px solid #DAD1CA;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -404,8 +412,8 @@ h2 {
 .checkbox-option:hover,
 .stress-option:hover,
 .option-item:hover {
-  background: #F3F4F6;
-  border-color: #D1D5DB;
+  background: var(--Color-CAJAS-PREGUNTAS, #B0A89F40);
+  border-color: #DAD1CA;
 }
 
 /* Hide native inputs but keep them focusable and usable */
@@ -523,7 +531,7 @@ h2 {
   width: 116px;
   height: 36px;
   padding: 8px;
-  background: #FFFFFF;
+  background: transparent;
   color: #323741;
   border: 1px solid #013237;
   border-radius: 8px;
@@ -561,7 +569,7 @@ h2 {
 }
 
 .next-btn:hover {
-  background: #F9FAFB;
+  background: transparent;
   border-color: #013237;
 }
 
