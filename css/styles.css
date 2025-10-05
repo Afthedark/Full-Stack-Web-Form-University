@@ -1,3 +1,56 @@
+/* Imagen-botón para pantalla 10: sin bordes, sin reducción, aspecto nativo */
+.image-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  max-width: 320px;
+}
+.image-btn img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+}
+.age-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.age-img {
+  display: block;
+  width: 150px;
+  height: 163px;
+  margin-bottom: 10px;
+  box-shadow: none;
+  transition: none;
+  position: relative;
+  opacity: 1;
+}
+
+.age-label {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: center;
+  margin-top: 2px;
+  letter-spacing: 0.01em;
+}
+/* Oculta la barra de progreso en pantallas informativas */
+.form-container.hide-progress-bar .progress-bar {
+  display: none !important;
+}
 /* ==========================================================================
    1. Global Styles & Variables
    ========================================================================== */
@@ -7,7 +60,7 @@
   --color-accent: #ffb800;
   --color-text: #1a1a1a;
   --color-bg: #fff;
-  --color-progress: #00473e;
+  --color-progress: #013237;
   --color-btn: #00473e;
   --color-btn-text: #fff;
   --color-border: #e0e0e0;
@@ -77,6 +130,7 @@ body {
   top: 40px;
   left: 0;
   right: 0;
+  z-index: 10;
 }
 
 .logo {
@@ -84,39 +138,50 @@ body {
   max-width: 100px;
   margin-bottom: 15px;
   text-align: center;
+  position: relative;
+  z-index: 5;
 }
 
 .logo img {
   width: 100%;
   height: auto;
   object-fit: contain;
+  display: block;
 }
 
 .progress-bar {
-  width: 100%;
-  height: 4px;
+  width: 295px;
+  height: 6px;
   background-color: #f0f0f0;
   margin-bottom: 0;
   position: relative;
-  max-width: 250px;
+  margin-top: 20px;
+  border-radius: 4px;
 }
 
 .progress {
   height: 100%;
-  background-color: #006633;
+  background-color: #013237;
   width: 16%;
   transition: width 0.3s ease;
+  border-radius: 4px;
 }
 
 /* ==========================================================================
    4. Typography
    ========================================================================== */
 h2 {
-  font-size: 1.3rem;
+  font-family: 'Acherus Grotesque', sans-serif;
   font-weight: 700;
+  font-style: bold;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: 0%;
   text-align: center;
+  vertical-align: middle;
   color: var(--color-primary);
   margin: 0 0 12px 0;
+  /* leading-trim: NONE; no es estándar CSS, omitido */
 }
 
 .subtitle {
@@ -127,11 +192,17 @@ h2 {
 }
 
 .subtitle-small {
-  font-size: 0.9rem;
+  font-family: 'Acherus Grotesque', sans-serif;
   font-weight: 400;
-  margin-bottom: 24px;
-  color: #666;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
   text-align: center;
+  vertical-align: middle;
+  color: #666;
+  margin-bottom: 24px;
+  /* leading-trim: NONE; no es estándar CSS, omitido */
 }
 
 /* ==========================================================================
@@ -146,7 +217,7 @@ h2 {
 }
 
 .age-btn {
-  background: var(--color-secondary);
+  background: #fff;
   border: 2px solid var(--color-border);
   border-radius: 12px;
   padding: 18px 0;
@@ -449,13 +520,14 @@ h2 {
    8. Component: Navigation Button
    ========================================================================== */
 .next-btn {
-  width: 180px;
-  min-width: 140px;
-  padding: 12px 20px;
+  width: 116px;
+  height: 36px;
+  padding: 8px;
   background: #FFFFFF;
-  color: #232933;
-  border: 1px solid #E5E7EB;
-  border-radius: 100px;
+  color: #323741;
+  border: 1px solid #013237;
+  border-radius: 8px;
+  box-sizing: border-box;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -469,18 +541,28 @@ h2 {
 
 .next-btn span {
   display: inline-block;
+  text-transform: uppercase;
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  /* leading-trim: NONE; no es estándar CSS, omitido */
 }
 
 .next-btn .arrow-icon {
   width: 20px;
   height: 20px;
-  fill: currentColor;
+  fill: #323741;
   transition: transform 0.2s ease;
 }
 
 .next-btn:hover {
   background: #F9FAFB;
-  border-color: #D1D5DB;
+  border-color: #013237;
 }
 
 .next-btn:hover .arrow-icon {
@@ -490,13 +572,26 @@ h2 {
 .next-btn:disabled {
   background: #F3F4F6;
   color: #9CA3AF;
-  border-color: #E5E7EB;
+  border-color: #013237;
+  opacity: 0.7;
   cursor: not-allowed;
 }
 
 .next-btn:disabled .arrow-icon {
   opacity: 0.5;
+  fill: #9CA3AF;
 }
+
+/* Botón de envío - última pantalla */
+.submit-btn {
+  /* El botón de envío mantiene la estructura pero sin los cambios de dimensiones */
+  width: auto;
+  min-width: 116px;
+  height: auto;
+  padding: 8px 16px;
+}
+
+/* .submit-btn span hereda todos los estilos de texto de .next-btn span */
 
 /* ==========================================================================
    8B. Component: Contact Form Fields
@@ -670,7 +765,9 @@ h2 {
 }
 
 #step-7 h2 {
-  margin-bottom: 16px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  font-size: 1.35rem;
 }
 
 #step-7 .subtitle {
@@ -682,60 +779,26 @@ h2 {
 }
 
 .teacher-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 24px auto;
   width: 100%;
-  max-width: 400px;
-  margin: 0 auto 32px;
-  border-radius: 16px;
-  overflow: hidden;
+  max-width: 320px;
 }
 
 .teacher-image img {
   width: 100%;
+  max-width: 260px;
   height: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  object-fit: cover;
   display: block;
 }
 
-.technology-image {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto 32px;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.technology-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.responsive-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-}
-
-#toStep8 {
-  margin-top: 24px;
-}
-
-/* Estilos específicos para la pantalla 8 (excepciones mínimas) */
-#step-8 h2 {
-  margin-bottom: 32px;
-}
-
-/* El layout/interacciones de las opciones de estrés se gestionan por las reglas compartidas
-   (checkbox-option / stress-option / checkbox-content / stress-content). Aquí solo ajustamos
-   el tamaño del icono emoji para esta pantalla. */
-.stress-icon {
-  font-size: 24px;
-  min-width: 32px;
-  text-align: center;
-}
-
-/* ========================================================================== */
-/*  9B. Calendar (Pantalla 18) - Base Styles (aplica a todos los breakpoints) */
+/* ==========================================================================
+   9B. Calendar (Pantalla 18) - Base Styles (aplica a todos los breakpoints) */
 /* ========================================================================== */
 .calendar-container {
   font-family: var(--font-family);
@@ -870,17 +933,27 @@ h2 {
   left: 0;
   width: 100%;
   text-align: center;
-  padding: 16px;
+  padding: 8px 12px;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(4px);
   z-index: 1000;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
 .terms-text {
   color: #666;
-  font-size: 0.8rem;
-  line-height: 1.4;
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  /* leading-trim: NONE; no es estándar CSS, omitido */
 }
 
 /* ==========================================================================
@@ -909,6 +982,16 @@ h2 {
   }
   .header-container {
     top: 32px;
+    padding: 0 15px;
+    box-sizing: border-box;
+    background-color: transparent !important;
+  }
+  .progress-bar {
+    width: 80%;
+    max-width: 295px;
+    margin: 25px auto 0;
+      background-color: #fff;
+      border: 1.5px solid #d1d5db;
   }
   h2 {
     font-size: 1.1rem;
@@ -927,6 +1010,13 @@ h2 {
     padding: 32px 40px 24px 40px;
     margin: 40px auto;
   }
+  .progress-bar {
+    width: 90%;
+    max-width: 295px;
+    margin: 20px auto 0;
+      background-color: #fff;
+      border: 1.5px solid #d1d5db;
+  }
 }
 
 /* Desktop */
@@ -943,6 +1033,13 @@ h2 {
     right: auto;
     margin-bottom: 18px;
     align-items: center;
+    padding: 15px 0;
+    width: 100%;
+  }
+  .progress-bar {
+    width: 100%;
+    max-width: 295px;
+    margin: 20px auto 0;
   }
 
   .form-container {
@@ -974,10 +1071,20 @@ h2 {
 /* Adjustments for specific components on larger screens */
 @media (min-width: 768px) {
   .form-footer {
-    width: 80%;
-    max-width: 600px;
+    background: #fff;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+    width: 700px;
+    max-width: 90%;
     left: 50%;
     transform: translateX(-50%);
+     padding: 10px 18px;
+    border-top: none;
+  }
+
+  .terms-text {
+    font-size: 12px;
+    color: #444;
   }
   
   #multiStepForm {
@@ -993,12 +1100,73 @@ h2 {
   }
 
   .progress-bar {
-    margin-bottom: 30px;
-    max-width: 400px;
+    width: 100%;
+    max-width: 295px;
+    margin: 20px auto 30px;
   }
 
   .logo {
     max-width: 120px;
     margin-bottom: 30px;
   }
+}
+
+/* Large desktop screens */
+@media (min-width: 1200px) {
+  .form-footer {
+     padding: 12px 18px;
+    max-width: 800px;
+    background: #fff;
+    box-shadow: 0 -2px 20px rgba(0,0,0,0.05);
+  }
+  
+  .terms-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+/* Pantallas con imágenes grandes: aplica mismo estilo que pantalla 7 */
+#step-10 .logo,
+#step-13 .logo,
+#step-16 .logo,
+#step-20 .logo {
+  margin-bottom: 0px;
+}
+#step-10 h2,
+#step-13 h2,
+#step-16 h2,
+#step-20 h2 {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  font-size: 1.35rem;
+}
+#step-10 .teacher-image,
+#step-13 .technology-image,
+#step-16 .teacher-image,
+#step-20 .teachers-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 24px auto;
+  width: 100%;
+  max-width: 320px;
+}
+#step-10 .teacher-image img,
+#step-13 .technology-image img,
+#step-16 .teacher-image img,
+#step-20 .teachers-image img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  object-fit: cover;
+  display: block;
+}
+#step-10 .subtitle,
+#step-13 .subtitle,
+#step-16 .subtitle,
+#step-20 .subtitle {
+  margin-bottom: 24px;
 }

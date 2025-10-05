@@ -74,6 +74,9 @@ ageBtns.forEach(btn => {
     btn.classList.add('selected');
     selectedAge = btn.dataset.age;
     toStep2Btn.disabled = false;
+
+    // Desplazar suavemente hacia el botón "Continuar"
+    toStep2Btn.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
@@ -121,7 +124,7 @@ toStep4Btn.addEventListener('click', () => {
   }
 
 
-  // Pantalla 5: Selección de razones (checkboxes)
+  // Pantalla 5: Selección de razones (checkboxes, solo una opción)
   const checkboxes = document.querySelectorAll('input[name="razon"]');
   const toStep6Btn = document.getElementById('toStep6');
   let selectedReasons = [];
@@ -129,6 +132,9 @@ toStep4Btn.addEventListener('click', () => {
   if (checkboxes.length && toStep6Btn) {
     checkboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          checkboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
         selectedReasons = Array.from(checkboxes)
           .filter(cb => cb.checked)
           .map(cb => cb.value);
@@ -209,15 +215,18 @@ toStep4Btn.addEventListener('click', () => {
     });
   }
 
-  // Pantalla 8: Manejo de presión y estrés
-  const stressRadios = document.querySelectorAll('input[name="stress"]');
+  // Pantalla 8: Manejo de presión y estrés (solo una opción, visual checkbox)
+  const stressCheckboxes = document.querySelectorAll('input[name="stress"]');
   const toStep9Btn = document.getElementById('toStep9');
   let selectedStress = null;
 
-  if (stressRadios.length && toStep9Btn) {
-    stressRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        selectedStress = radio.value;
+  if (stressCheckboxes.length && toStep9Btn) {
+    stressCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          stressCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
+        selectedStress = Array.from(stressCheckboxes).find(cb => cb.checked)?.value || null;
         toStep9Btn.disabled = !selectedStress;
       });
     });
@@ -230,15 +239,18 @@ toStep4Btn.addEventListener('click', () => {
   }
 
 
-  // Pantalla 9: Comodidad de estudio (corregido para usar name="study-comfort")
-  const studyComfortRadios = document.querySelectorAll('input[name="study-comfort"]');
+  // Pantalla 9: Comodidad de estudio (solo una opción, visual checkbox)
+  const studyComfortCheckboxes = document.querySelectorAll('input[name="study-comfort"]');
   const toStep10Btn = document.getElementById('toStep10');
   let selectedStudyComfort = null;
 
-  if (studyComfortRadios.length && toStep10Btn) {
-    studyComfortRadios.forEach(radio => {
-      radio.addEventListener('change', () => {
-        selectedStudyComfort = radio.value;
+  if (studyComfortCheckboxes.length && toStep10Btn) {
+    studyComfortCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          studyComfortCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
+        selectedStudyComfort = Array.from(studyComfortCheckboxes).find(cb => cb.checked)?.value || null;
         toStep10Btn.disabled = !selectedStudyComfort;
       });
     });
@@ -251,16 +263,15 @@ toStep4Btn.addEventListener('click', () => {
   }
 
   // Pantalla 10: Método de enseñanza que te reta y te hace brillar
+  // Ahora la imagen funciona como botón (id="toStep11")
   const toStep11Btn = document.getElementById('toStep11');
-
   if (toStep11Btn) {
-    // Esta pantalla no necesita validación, el botón siempre está habilitado
     toStep11Btn.addEventListener('click', () => {
       goToStep(10);
     });
   }
 
-  // Pantalla 11: Metodología de aprendizaje preferida
+  // Pantalla 11: Metodología de aprendizaje preferida (solo una opción)
   const learningMethodCheckboxes = document.querySelectorAll('input[name="learning-method"]');
   const toStep12Btn = document.getElementById('toStep12');
   let selectedLearningMethods = [];
@@ -268,6 +279,9 @@ toStep4Btn.addEventListener('click', () => {
   if (learningMethodCheckboxes.length && toStep12Btn) {
     learningMethodCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          learningMethodCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
         selectedLearningMethods = Array.from(learningMethodCheckboxes)
           .filter(cb => cb.checked)
           .map(cb => cb.value);
@@ -282,7 +296,7 @@ toStep4Btn.addEventListener('click', () => {
     });
   }
 
-  // Pantalla 12: Modalidad preferida del posgrado
+  // Pantalla 12: Modalidad preferida del posgrado (solo una opción)
   const modalityCheckboxes = document.querySelectorAll('input[name="modality"]');
   const toStep13Btn = document.getElementById('toStep13');
   let selectedModalities = [];
@@ -290,6 +304,9 @@ toStep4Btn.addEventListener('click', () => {
   if (modalityCheckboxes.length && toStep13Btn) {
     modalityCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          modalityCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
         selectedModalities = Array.from(modalityCheckboxes)
           .filter(cb => cb.checked)
           .map(cb => cb.value);
@@ -314,7 +331,7 @@ toStep4Btn.addEventListener('click', () => {
     });
   }
 
-  // Pantalla 14: Desafíos al considerar un posgrado
+  // Pantalla 14: Desafíos al considerar un posgrado (solo una opción)
   const challengeCheckboxes = document.querySelectorAll('input[name="challenge"]');
   const toStep15Btn = document.getElementById('toStep15');
   let selectedChallenges = [];
@@ -322,6 +339,9 @@ toStep4Btn.addEventListener('click', () => {
   if (challengeCheckboxes.length && toStep15Btn) {
     challengeCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          challengeCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
         selectedChallenges = Array.from(challengeCheckboxes)
           .filter(cb => cb.checked)
           .map(cb => cb.value);
@@ -336,7 +356,7 @@ toStep4Btn.addEventListener('click', () => {
     });
   }
 
-  // Pantalla 15: ¿Cómo te imaginas en 10 años?
+  // Pantalla 15: ¿Cómo te imaginas en 10 años? (solo una opción)
   const futureVisionCheckboxes = document.querySelectorAll('input[name="future-vision"]');
   const toStep16Btn = document.getElementById('toStep16');
   let selectedFutureVisions = [];
@@ -344,6 +364,9 @@ toStep4Btn.addEventListener('click', () => {
   if (futureVisionCheckboxes.length && toStep16Btn) {
     futureVisionCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          futureVisionCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
         selectedFutureVisions = Array.from(futureVisionCheckboxes)
           .filter(cb => cb.checked)
           .map(cb => cb.value);
@@ -368,7 +391,7 @@ toStep4Btn.addEventListener('click', () => {
     });
   }
 
-  // Pantalla 17: ¿Qué harías si la maestría resulta ser más difícil de lo esperado?
+  // Pantalla 17: ¿Qué harías si la maestría resulta ser más difícil de lo esperado? (solo una opción)
   const difficultyResponseCheckboxes = document.querySelectorAll('input[name="difficulty-response"]');
   const toStep18Btn = document.getElementById('toStep18');
   let selectedDifficultyResponses = [];
@@ -376,6 +399,9 @@ toStep4Btn.addEventListener('click', () => {
   if (difficultyResponseCheckboxes.length && toStep18Btn) {
     difficultyResponseCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          difficultyResponseCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
         selectedDifficultyResponses = Array.from(difficultyResponseCheckboxes)
           .filter(cb => cb.checked)
           .map(cb => cb.value);
@@ -541,6 +567,9 @@ toStep4Btn.addEventListener('click', () => {
   if (financingCheckboxes.length && toStep20Btn) {
     financingCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          financingCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
+        }
         selectedFinancing = Array.from(financingCheckboxes)
           .filter(cb => cb.checked)
           .map(cb => cb.value);
@@ -663,12 +692,49 @@ toStep4Btn.addEventListener('click', () => {
       console.error('Índice de paso inválido');
       return;
     }
-    
+
     steps[currentStep].classList.remove('active');
     steps[stepIndex].classList.add('active');
     currentStep = stepIndex;
     updateProgress();
-    
+
+    // Ocultar barra de progreso en pantallas 1, 7, 10, 13, 20
+    const mainContainer = document.querySelector('.form-container');
+    const headerContainer = document.querySelector('.header-container');
+    const footer = document.querySelector('.form-footer');
+    const body = document.body;
+    const hideProgressScreens = [0, 6, 9, 12, 19]; // 0-based: 1,7,10,13,20
+    if (mainContainer) {
+      if (hideProgressScreens.includes(stepIndex)) {
+        mainContainer.classList.add('hide-progress-bar');
+      } else {
+        mainContainer.classList.remove('hide-progress-bar');
+      }
+    }
+
+    // Cambios de fondo para las pantallas específicas
+    if (mainContainer && headerContainer && footer && body) {
+      const specialBackgroundScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20];
+      if (specialBackgroundScreens.includes(stepIndex)) {
+        mainContainer.style.background = 'linear-gradient(180deg, #F8F4F0 0%, #DDD0C8 100%)';
+        footer.style.background = '#DDD0C8';
+        body.style.background = 'linear-gradient(180deg, #F8F4F0 0%, #DDD0C8 100%)';
+        footer.style.backdropFilter = 'none';
+        footer.style.borderTop = 'none';
+        
+        // Aplicar color de fondo al header - transparente en todas las pantallas
+        headerContainer.style.setProperty('background', 'transparent', 'important');
+        console.log('Header aplicado transparente:', stepIndex);
+      } else {
+        mainContainer.style.background = '';
+        headerContainer.style.removeProperty('background');
+        footer.style.background = '';
+        body.style.background = '';
+        footer.style.backdropFilter = '';
+        footer.style.borderTop = '';
+      }
+    }
+
     // Focus en el primer elemento interactivo del nuevo paso
     const firstInteractive = steps[stepIndex].querySelector('button, select, input');
     if (firstInteractive) firstInteractive.focus();
@@ -682,4 +748,29 @@ toStep4Btn.addEventListener('click', () => {
 
   // Inicializa progreso
   updateProgress();
+
+  // Oculta la barra de progreso si la pantalla inicial es una de las que la requiere oculta
+  const mainContainer = document.querySelector('.form-container');
+  const hideProgressScreens = [0, 6, 9, 12, 19]; // 0-based: 1,7,10,13,20
+  if (mainContainer && hideProgressScreens.includes(currentStep)) {
+    mainContainer.classList.add('hide-progress-bar');
+  }
+  
+  // Manejador para adaptar el header cuando cambia el tamaño de la ventana
+  window.addEventListener('resize', () => {
+    const headerContainer = document.querySelector('.header-container');
+    const specialBackgroundScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20];
+    if (headerContainer && specialBackgroundScreens.includes(currentStep)) {
+      headerContainer.style.setProperty('background', 'transparent', 'important');
+      console.log('Header resize aplicado transparente:', currentStep);
+    }
+  });
+  
+  // Aplicar estilo inicial del header si estamos en una pantalla especial
+  const initialHeaderContainer = document.querySelector('.header-container');
+  const initialSpecialScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20];
+  if (initialHeaderContainer && initialSpecialScreens.includes(currentStep)) {
+    initialHeaderContainer.style.setProperty('background', 'transparent', 'important');
+    console.log('Header inicial aplicado transparente:', currentStep);
+  }
 }); // Cierre de DOMContentLoaded
