@@ -25,27 +25,37 @@
   overflow: hidden;
   border: none;
   background: none;
-  padding: 0;
+  padding: 12px 8px;
+  min-height: 180px;
 }
 
 .age-img {
   display: block;
-  width: 150px;
-  height: 163px;
-  margin-bottom: 10px;
+  width: 130px;
+  height: 140px;
+  margin-bottom: 12px;
   box-shadow: none;
   transition: none;
   position: relative;
   opacity: 1;
+  overflow: hidden;
+}
+
+.age-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .age-label {
-  font-size: 1.08rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--color-primary);
   text-align: center;
-  margin-top: 2px;
+  margin-top: 4px;
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 /* Oculta la barra de progreso en pantallas informativas */
 .form-container.hide-progress-bar .progress-bar {
@@ -97,13 +107,12 @@ body {
   background: var(--color-bg);
   border-radius: 16px;
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  padding: 120px 32px 24px 32px;
+  padding: 120px 32px 80px 32px;
   min-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding-bottom: 80px;
   align-items: center;
 }
 
@@ -215,6 +224,9 @@ h2 {
   gap: 16px;
   margin-bottom: 24px;
   width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -258,11 +270,13 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 100;
 }
 
 .custom-select {
   position: relative;
   width: 100%;
+  z-index: 100;
 }
 
 .custom-select__trigger {
@@ -287,8 +301,13 @@ h2 {
   font-weight: 400;
 }
 
+.custom-select.open {
+  z-index: 10000;
+}
+
 .custom-select.open .custom-select__trigger {
   border-radius: 12px;
+  z-index: 10001;
 }
 
 .arrow {
@@ -338,10 +357,10 @@ h2 {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  z-index: 2;
+  z-index: 9999;
   transform: translateY(-10px);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   max-height: 300px;
   overflow-y: auto;
 }
@@ -351,6 +370,7 @@ h2 {
   visibility: visible;
   pointer-events: all;
   transform: translateY(0);
+  z-index: 10002;
 }
 
 .custom-option {
@@ -545,6 +565,9 @@ h2 {
   justify-content: center;
   gap: 8px;
   transition: all 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .next-btn span {
@@ -921,7 +944,7 @@ h2 {
 
 /* Responsive refinamientos específicos */
 @media (max-width: 600px) {
-  #step-18 h2 { font-size: 1.28rem; margin-top: 4px; }
+  #step-18 h2 { font-size: 1.2rem; margin-top: 0; margin-bottom: 16px; }
   .calendar-container { max-width: 100%; padding: 8px 8px 12px; }
   .calendar-header { font-size: 0.9rem; padding: 12px 14px; }
   .calendar-header span#displayDate { max-width: 200px; }
@@ -930,6 +953,57 @@ h2 {
   .calendar-weekdays { gap: 2px; font-size: 10px; }
   .calendar-days { gap: 2px; }
   .calendar-day { min-height: 40px; font-size: 12px; border-radius: 6px; }
+  
+  /* Asegurar que los elementos del formulario tengan suficiente espacio */
+  .form-step {
+    width: 100%;
+    max-width: none;
+  }
+  
+  /* Mejorar la visualización de las opciones checkbox en móvil */
+  .checkbox-options {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-option {
+    padding: 12px;
+  }
+  
+  .checkbox-text {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  
+  /* Ajustar las opciones de edad en móvil */
+  .age-options {
+    gap: 16px;
+    margin-bottom: 24px;
+    max-width: 320px;
+  }
+  
+  .age-btn {
+    padding: 16px 8px;
+    min-height: 170px;
+  }
+  
+  .age-img {
+    width: 120px;
+    height: 130px;
+    margin-bottom: 12px;
+  }
+  
+  .age-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .age-label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
 }
 
 /* ==========================================================================
@@ -982,31 +1056,139 @@ h2 {
     max-width: 100vw;
     min-height: 100vh;
     border-radius: 0;
-    padding: 110px 4px 8px 4px;
+    padding: 180px 16px 80px 16px;
     margin: 0;
+    justify-content: flex-start;
   }
   .logo {
     max-width: 90px;
   }
   .header-container {
-    top: 32px;
-    padding: 0 15px;
+    top: 20px;
+    padding: 0 16px;
     box-sizing: border-box;
     background-color: transparent !important;
+    margin-bottom: 40px;
   }
   .progress-bar {
     width: 80%;
     max-width: 295px;
-    margin: 25px auto 0;
-      background-color: #fff;
-      border: 1.5px solid #d1d5db;
+    margin: 40px auto 0;
+    background-color: #fff;
+    border: 1.5px solid #d1d5db;
   }
   h2 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 24px;
   }
-  .next-btn, select {
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  .subtitle-small {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+  .next-btn {
+    font-size: 1rem;
+    padding: 12px 16px;
+    margin: 32px auto 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  select {
     font-size: 1rem;
     padding: 14px;
+  }
+  
+  /* Asegurar que el botón continuar sea visible en pantalla 1 */
+  #step-1 .next-btn {
+    margin-top: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Ajustar espaciado de las opciones de edad */
+  .age-options {
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+  
+  .age-btn {
+    padding: 16px 8px;
+  }
+  
+  .age-img {
+    width: 130px;
+    height: 140px;
+    margin-bottom: 12px;
+  }
+  
+  .age-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .age-label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  
+  /* Mejorar el espaciado del formulario de contacto */
+  .contact-form {
+    margin: 24px auto 28px;
+  }
+  
+  /* Espaciado específico para pantallas con barra de progreso visible */
+  .form-step:not(#step-1):not(#step-7):not(#step-10):not(#step-13):not(#step-20) {
+    margin-top: 24px;
+  }
+  
+  /* Espaciado especial para la pantalla de contacto */
+  #step-21 {
+    margin-top: 28px;
+  }
+  
+  #step-21 h2 {
+    margin-bottom: 28px;
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+  
+  /* Espaciado específico para opciones checkbox */
+  .checkbox-options {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .checkbox-option {
+    padding: 14px;
+  }
+  
+  /* Ajustes específicos para selectores en móvil */
+  .custom-select-wrapper {
+    z-index: 200;
+  }
+  
+  .custom-select.open {
+    z-index: 9998;
+  }
+  
+  .custom-select.open .custom-select__trigger {
+    z-index: 9999;
+  }
+  
+  .custom-select.open .custom-options {
+    z-index: 10000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Asegurar que el botón continuar no interfiera */
+  .next-btn {
+    z-index: 1 !important;
   }
 }
 
@@ -1132,6 +1314,175 @@ h2 {
     font-size: 14px;
     line-height: 20px;
   }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 320px) {
+  .form-container {
+    padding: 170px 12px 80px 12px;
+  }
+  
+  .header-container {
+    margin-bottom: 35px;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    margin: 35px auto 0;
+  }
+  
+  .age-options {
+    gap: 14px;
+    margin-bottom: 20px;
+    max-width: 300px;
+  }
+  
+  .age-btn {
+    padding: 12px 6px;
+    min-height: 155px;
+  }
+  
+  .age-img {
+    width: 105px;
+    height: 115px;
+    margin-bottom: 8px;
+  }
+  
+  .age-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .age-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  
+  .checkbox-text {
+    font-size: 0.85rem;
+  }
+  
+  .next-btn {
+    width: 110px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+  
+  .custom-select-wrapper {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Espaciado específico para formulario de contacto en pantallas pequeñas */
+  .contact-form {
+    margin: 20px auto 24px;
+  }
+  
+  .checkbox-options {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  /* Espaciado específico para pantallas con barra de progreso visible */
+  .form-step:not(#step-1):not(#step-7):not(#step-10):not(#step-13):not(#step-20) {
+    margin-top: 20px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .form-container {
+    padding: 120px 16px 60px 16px;
+  }
+  
+  .header-container {
+    top: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .progress-bar {
+    margin: 30px auto 0;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+  
+  .subtitle {
+    margin-bottom: 16px;
+  }
+  
+  .age-options {
+    gap: 12px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  
+  .age-btn {
+    padding: 10px 6px;
+    min-height: 130px;
+  }
+  
+  .age-img {
+    width: 95px;
+    height: 105px;
+    margin-bottom: 6px;
+  }
+  
+  .age-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .age-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  .checkbox-options {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  
+  .next-btn {
+    margin-top: 20px;
+  }
+  
+  /* Espaciado específico para pantallas con barra de progreso visible */
+  .form-step:not(#step-1):not(#step-7):not(#step-10):not(#step-13):not(#step-20) {
+    margin-top: 16px;
+  }
+}
+
+/* Extra rule to ensure dropdown always appears on top */
+.custom-select.open {
+  z-index: 10000 !important;
+}
+
+.custom-select.open .custom-options {
+  z-index: 10002 !important;
+}
+
+/* Prevent any interference from other elements when dropdown is open */
+body.dropdown-open .next-btn {
+  z-index: 1 !important;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Re-enable pointer events when dropdown is closed */
+.next-btn {
+  pointer-events: auto;
+  opacity: 1;
 }
 
 /* Pantallas con imágenes grandes: aplica mismo estilo que pantalla 7 */

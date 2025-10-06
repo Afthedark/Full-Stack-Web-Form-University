@@ -2,8 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   <meta name="description" content="Formulario de admisión para posgrados en la Universidad El Bosque. Completa tus datos y da el siguiente paso en tu futuro profesional."/>
+  <meta name="theme-color" content="#00473e"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
   <title>Formulario Universidad El Bosque</title>
   <link rel="stylesheet" href="css/styles.css"/>
 </head>
@@ -56,9 +59,7 @@
         </div>
         <button type="button" class="next-btn" id="toStep2" disabled>
             <span>Continuar</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
       </section>
       <!-- Pantalla 2: Selección de género -->
@@ -85,9 +86,7 @@
         </div>
         <button type="button" class="next-btn" id="toStep3" disabled>
             <span>Continuar</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
       </section>
       <!-- Pantalla 3: Selección de profesión -->
@@ -114,9 +113,7 @@
         </div>
         <button type="button" class="next-btn" id="toStep4" disabled>
             <span>Continuar</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
       </section>
       <!-- Pantalla 4: Selección de posgrado -->
@@ -165,9 +162,7 @@
         </div>
         <button type="button" class="next-btn" id="toStep5" disabled>
             <span>Continuar</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
       </section>
       
@@ -181,9 +176,7 @@
             <input type="checkbox" name="razon" value="crecimiento-profesional">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 5/1.svg" alt="Crecimiento profesional icono" width="24" height="24" />
               <span class="checkbox-text">Crecimiento profesional y mejores oportunidades.</span>
             </div>
           </label>
@@ -192,10 +185,7 @@
             <input type="checkbox" name="razon" value="mejorar-conocimiento">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 5/2.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Mejorar mi conocimiento y actualización académica.</span>
             </div>
           </label>
@@ -204,11 +194,7 @@
             <input type="checkbox" name="razon" value="explorar-areas">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                <line x1="12" y1="22.08" x2="12" y2="12"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 5/3.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Explorar nuevas áreas dentro de mi profesión</span>
             </div>
           </label>
@@ -217,11 +203,7 @@
             <input type="checkbox" name="razon" value="no-seguro">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                <line x1="12" y1="17" x2="12.01" y2="17"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 5/4.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">No estoy seguro/a todavía.</span>
             </div>
           </label>
@@ -229,9 +211,7 @@
 
         <button type="submit" class="next-btn" id="toStep6" disabled>
             <span>Continuar</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
       </section>
 
@@ -243,11 +223,7 @@
             <input type="checkbox" name="seguridad" value="completamente-seguro">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <circle cx="12" cy="10" r="3" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 6/1.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Completamente seguro, siempre ha sido mi sueño</span>
             </div>
           </label>
@@ -255,11 +231,7 @@
             <input type="checkbox" name="seguridad" value="bastante-seguro">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <circle cx="12" cy="10" r="3" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 6/2.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Bastante seguro, pero aún tengo algunas dudas.</span>
             </div>
           </label>
@@ -267,11 +239,7 @@
             <input type="checkbox" name="seguridad" value="algo-inseguro">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <circle cx="12" cy="10" r="3" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 6/3.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Algo inseguro, me gustaría explorar más opciones.</span>
             </div>
           </label>
@@ -279,20 +247,14 @@
             <input type="checkbox" name="seguridad" value="no-estoy-seguro">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <circle cx="12" cy="10" r="3" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 6/4.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">No estoy seguro, solo quiero conocer más.</span>
             </div>
           </label>
         </div>
         <button type="button" class="next-btn" id="toStep7" disabled>
           <span>Continuar</span>
-          <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-          </svg>
+          <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
         </button>
       </section>
 
@@ -317,10 +279,7 @@
             <input type="checkbox" name="stress" value="muy-bien">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 7/1.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Muy bien, me motiva a mejorar.</span>
             </div>
           </label>
@@ -329,10 +288,7 @@
             <input type="checkbox" name="stress" value="con-esfuerzo">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 7/2.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Lo manejo con esfuerzo, pero a veces me supera.</span>
             </div>
           </label>
@@ -341,10 +297,7 @@
             <input type="checkbox" name="stress" value="me-cuesta">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 7/3.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Me cuesta controlarlo y me desmotiva.</span>
             </div>
           </label>
@@ -353,10 +306,7 @@
             <input type="checkbox" name="stress" value="me-paraliza">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 7/4.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Me paraliza y me hace dudar de mis habilidades.</span>
             </div>
           </label>
@@ -364,9 +314,7 @@
 
         <button type="button" class="next-btn" id="toStep9" disabled>
           <span>Continuar</span>
-          <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-          </svg>
+          <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
         </button>
       </section>
 
@@ -378,10 +326,7 @@
             <input type="checkbox" name="study-comfort" value="muy-comodo">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 9/1.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Muy cómodo, disfruto aprender cosas nuevas.</span>
             </div>
           </label>
@@ -390,10 +335,7 @@
             <input type="checkbox" name="study-comfort" value="me-gusta-aprender">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 9/2.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Me gusta aprender, pero a veces me cuesta memorizar.</span>
             </div>
           </label>
@@ -402,10 +344,7 @@
             <input type="checkbox" name="study-comfort" value="prefiero-practica">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 9/3.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Prefiero aprender con práctica, no tanto con teoría.</span>
             </div>
           </label>
@@ -414,10 +353,7 @@
             <input type="checkbox" name="study-comfort" value="dificil-concentrarme">
             <span class="checkbox-custom"></span>
             <div class="checkbox-content">
-              <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-              </svg>
+              <img class="checkbox-icon" src="assets/svg/pantalla 9/4.svg" alt="Icono" width="24" height="24" />
               <span class="checkbox-text">Me cuesta concentrarme en el estudio.</span>
             </div>
           </label>
@@ -425,9 +361,7 @@
 
         <button type="button" class="next-btn" id="toStep10" disabled>
           <span>Continuar</span>
-          <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-          </svg>
+          <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
         </button>
       </section>
 
@@ -435,7 +369,7 @@
         <section class="form-step" id="step-10">
           <div class="logo"></div>
           <h2>Un método de enseñanza<br>que te reta y te hace brillar</h2>
-          <p class="subtitle-small">
+          <p class="subtitle-small" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">
             Aquí no solo aprendes, vives lo aprendido. Te pondrás a prueba en casos reales, tomarás decisiones y descubrirás de qué estás hecho mientras te preparas para triunfar.
           </p>
           <div style="display:flex; justify-content:center; margin-bottom:32px;">
@@ -453,10 +387,7 @@
               <input type="checkbox" name="learning-method" value="practica-casos">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                  <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 11/1.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Práctica basada en casos reales y simulaciones.</span>
               </div>
             </label>
@@ -465,10 +396,7 @@
               <input type="checkbox" name="learning-method" value="teorico-casos">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                  <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 11/2.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Aprendizaje teórico con discusión de casos reales.</span>
               </div>
             </label>
@@ -477,10 +405,7 @@
               <input type="checkbox" name="learning-method" value="investigacion-academica">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                  <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 11/3.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Investigación y desarrollo académico.</span>
               </div>
             </label>
@@ -489,10 +414,7 @@
               <input type="checkbox" name="learning-method" value="sin-preferencia">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10" stroke-width="2"/>
-                  <path d="M8 16c1.333-1 4.667-1 6 0" stroke-width="2"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 11/4.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">No tengo preferencia.</span>
               </div>
             </label>
@@ -500,9 +422,7 @@
 
           <button type="button" class="next-btn" id="toStep12" disabled>
             <span>Continuar</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
         </section>
 
@@ -514,9 +434,7 @@
               <input type="checkbox" name="modality" value="presencial">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 12/1.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Presencial con interacción directa.</span>
               </div>
             </label>
@@ -525,10 +443,7 @@
               <input type="checkbox" name="modality" value="hibrido">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 12/2.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Híbrido (presencial y virtual).</span>
               </div>
             </label>
@@ -537,11 +452,7 @@
               <input type="checkbox" name="modality" value="virtual">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                  <line x1="12" y1="22.08" x2="12" y2="12"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 12/3.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">100% virtual por flexibilidad.</span>
               </div>
             </label>
@@ -550,11 +461,7 @@
               <input type="checkbox" name="modality" value="no-preferencia">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-                  <line x1="12" y1="17" x2="12.01" y2="17"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 12/4.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">No tengo preferencia.</span>
               </div>
             </label>
@@ -562,9 +469,7 @@
 
           <button type="button" class="next-btn" id="toStep13" disabled>
             <span>Continuar</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
         </section>
 
@@ -572,7 +477,7 @@
         <section class="form-step" id="step-13">
           <div class="logo"></div>
           <h2>Tecnología de otro nivel</h2>
-          <p class="subtitle">Vive la emoción de aprender con tecnología que pocos han probado. Simuladores, equipos de última generación y realidad virtual que te llevan a entrenarte como si ya estuvieras en tu profesión.</p>
+          <p class="subtitle" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">Vive la emoción de aprender con tecnología que pocos han probado. Simuladores, equipos de última generación y realidad virtual que te llevan a entrenarte como si ya estuvieras en tu profesión.</p>
           <div style="display:flex; justify-content:center; margin-bottom:32px;">
             <button type="button" id="toStep14" class="image-btn">
               <img src="assets/img/test2.png" alt="Tecnología VR - Universidad El Bosque">
@@ -589,9 +494,7 @@
               <input type="checkbox" name="challenge" value="equilibrar-estudio-trabajo">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 14/1.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Equilibrar el estudio con mi trabajo actual</span>
               </div>
             </label>
@@ -600,10 +503,7 @@
               <input type="checkbox" name="challenge" value="costo-financiamiento">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M12 1v6m0 6v6m6-9h-6m-6 0h6"/>
-                  <circle cx="12" cy="12" r="10"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 14/2.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">El costo y las opciones de financiamiento</span>
               </div>
             </label>
@@ -612,11 +512,7 @@
               <input type="checkbox" name="challenge" value="adaptarme-metodologias">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                  <line x1="12" y1="22.08" x2="12" y2="12"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 14/3.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Adaptarme a las nuevas metodologías de aprendizaje</span>
               </div>
             </label>
@@ -625,20 +521,15 @@
               <input type="checkbox" name="challenge" value="encontrar-especializacion">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <circle cx="11" cy="11" r="8"/>
-                  <path d="M21 21l-4.35-4.35"/>
-                </svg>
-                <span class="checkbox-text">Encontrar una especialización que realmente me beneficie</span>
+                <img class="checkbox-icon" src="assets/svg/pantalla 14/4.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Encontrar una especialización que realmente me apasione</span>
               </div>
             </label>
           </div>
 
           <button type="button" class="next-btn" id="toStep15" disabled>
             <span>Continuar</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
         </section>
 
@@ -651,9 +542,7 @@
               <input type="checkbox" name="future-vision" value="carrera-apasione">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 15/1.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Desarrollándome en una carrera que me apasione.</span>
               </div>
             </label>
@@ -662,12 +551,7 @@
               <input type="checkbox" name="future-vision" value="liderando-proyectos">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="8.5" cy="7" r="4"/>
-                  <path d="M20 8v6"/>
-                  <path d="M23 11l-3-3 3-3"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 15/2.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Liderando proyectos o equipos en mi campo.</span>
               </div>
             </label>
@@ -676,11 +560,7 @@
               <input type="checkbox" name="future-vision" value="emprendiendo">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                  <line x1="8" y1="21" x2="16" y2="21"/>
-                  <line x1="12" y1="17" x2="12" y2="21"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 15/3.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Emprendiendo o trabajando en algo propio.</span>
               </div>
             </label>
@@ -689,10 +569,7 @@
               <input type="checkbox" name="future-vision" value="aprendizaje-continuo">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 15/4.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Siguiendo en constante aprendizaje y evolución.</span>
               </div>
             </label>
@@ -700,9 +577,7 @@
 
           <button type="button" class="next-btn" id="toStep16" disabled>
             <span>CONTINUAR</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
         </section>
 
@@ -710,7 +585,7 @@
         <section class="form-step" id="step-16">
           <div class="logo"></div>
           <h2>Profesores que te inspiran<br>y te motivan.</h2>
-          <p class="subtitle">No son simples docentes: son doctores, investigadores y expertos que ya lograron lo que tú sueñas. Ellos te mostrarán el camino y te compartirán los secretos para alcanzar tus metas.</p>
+          <p class="subtitle" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">No son simples docentes: son doctores, investigadores y expertos que ya lograron lo que tú sueñas. Ellos te mostrarán el camino y te compartirán los secretos para alcanzar tus metas.</p>
           <div style="display:flex; justify-content:center; margin-bottom:32px;">
             <button type="button" id="toStep17" class="image-btn">
               <img src="assets/img/test3.png" alt="Profesores inspiradores de la Universidad El Bosque">
@@ -727,10 +602,7 @@
               <input type="checkbox" name="difficulty-response" value="seguir-adelante">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M9 11l3 3L22 4"/>
-                  <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.67 0 3.21.46 4.55 1.26"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 17/1.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Seguiría adelante y buscaría ayuda si es necesario.</span>
               </div>
             </label>
@@ -739,9 +611,7 @@
               <input type="checkbox" name="difficulty-response" value="esforzarse-considerar">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 17/2.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Me esforzaría, pero si es muy difícil consideraría otra especialidad.</span>
               </div>
             </label>
@@ -750,9 +620,7 @@
               <input type="checkbox" name="difficulty-response" value="buscar-alternativa">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 17/3.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Buscaría otra alternativa en mi sector.</span>
               </div>
             </label>
@@ -761,10 +629,7 @@
               <input type="checkbox" name="difficulty-response" value="cambiar-maestria">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <circle cx="12" cy="12" r="3"/>
-                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 17/4.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Pensaría en cambiar de maestría.</span>
               </div>
             </label>
@@ -772,9 +637,7 @@
 
           <button type="button" class="next-btn" id="toStep18" disabled>
             <span>CONTINUAR</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
         </section>
 
@@ -814,9 +677,7 @@
 
           <button type="button" class="next-btn" id="toStep19" disabled>
             <span>CONTINUAR</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
         </section>
 
@@ -829,10 +690,7 @@
               <input type="checkbox" name="financing" value="ahorros-personales">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M12 1v6m0 6v6m6-9h-6m-6 0h6"/>
-                  <circle cx="12" cy="12" r="10"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 19/1.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Ahorros personales o familiares.</span>
               </div>
             </label>
@@ -841,11 +699,7 @@
               <input type="checkbox" name="financing" value="credito-educativo">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/>
-                  <line x1="12" y1="16" x2="12" y2="16"/>
-                  <line x1="6" y1="12" x2="18" y2="12"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 19/2.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Crédito educativo con una entidad financiera.</span>
               </div>
             </label>
@@ -854,10 +708,7 @@
               <input type="checkbox" name="financing" value="becas-apoyos">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                  <polyline points="22 4 12 14.01 9 11.01"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 19/3.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Becas y apoyos económicos de la universidad.</span>
               </div>
             </label>
@@ -866,10 +717,7 @@
               <input type="checkbox" name="financing" value="apoyo-empresa">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
-                <svg class="checkbox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
-                  <path d="M20 7h-7m0 0v11m0-11h-7m7 0V4"/>
-                  <rect x="3" y="7" width="18" height="14" rx="2"/>
-                </svg>
+                <img class="checkbox-icon" src="assets/svg/pantalla 19/4.svg" alt="Icono" width="24" height="24" />
                 <span class="checkbox-text">Apoyo de mi empresa.</span>
               </div>
             </label>
@@ -877,9 +725,7 @@
 
           <button type="button" class="next-btn" id="toStep20" disabled>
             <span>CONTINUAR</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
         </section>
 
@@ -887,7 +733,12 @@
         <section class="form-step" id="step-20">
           <div class="logo"></div>
           <h2>Aprende con los mejores</h2>
-          <p class="subtitle">Tus profesores no solo son expertos, sino que tienen experiencia en el campo real. ¡Algunos incluso han trabajado en los casos más impactantes!</p>
+          <p class="subtitle" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">
+            Tus profesores no solo son expertos,<br>
+            sino que tienen experiencia en el campo real.<br>
+            <strong>¡Algunos incluso han trabajado<br>
+            en los casos más impactantes!</strong>
+          </p>
           <div style="display:flex; justify-content:center; margin-bottom:32px;">
             <button type="button" id="toStep21" class="image-btn">
               <img src="assets/img/test4.png" alt="Profesores expertos de la Universidad El Bosque">
@@ -918,9 +769,7 @@
 
           <button type="submit" class="next-btn submit-btn" id="submitForm" disabled>
             <span>ENVIAR</span>
-            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/>
-            </svg>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Enviar" aria-hidden="true">
           </button>
         </section>
     </form>

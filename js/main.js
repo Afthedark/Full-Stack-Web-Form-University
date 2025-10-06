@@ -9,7 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle dropdown
     trigger.addEventListener('click', () => {
       closeAllSelects(select);
+      const isOpening = !select.classList.contains('open');
       select.classList.toggle('open');
+      
+      // Add/remove body class to handle z-index conflicts
+      if (isOpening) {
+        document.body.classList.add('dropdown-open');
+      } else {
+        document.body.classList.remove('dropdown-open');
+      }
     });
 
     // Option click handler
@@ -30,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
         select.classList.remove('open');
+        document.body.classList.remove('dropdown-open');
       });
     });
   });
@@ -37,17 +46,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // Cerrar dropdowns al hacer click fuera
   document.addEventListener('click', (e) => {
     const isSelect = e.target.closest('.custom-select');
-    if (!isSelect) {
+    const isNextBtn = e.target.closest('.next-btn');
+    
+    if (!isSelect || isNextBtn) {
       closeAllSelects();
     }
   });
 
+  // Cerrar dropdown al hacer scroll
+  document.addEventListener('scroll', () => {
+    closeAllSelects();
+  });
+
   function closeAllSelects(except = null) {
+    let hasOpenDropdown = false;
     customSelects.forEach(select => {
       if (select !== except) {
         select.classList.remove('open');
+      } else if (select && select.classList.contains('open')) {
+        hasOpenDropdown = true;
       }
     });
+    
+    // Remove body class if no dropdowns are open
+    if (!hasOpenDropdown) {
+      document.body.classList.remove('dropdown-open');
+    }
   }
 
   // Inicialización del formulario
@@ -75,8 +99,19 @@ ageBtns.forEach(btn => {
     selectedAge = btn.dataset.age;
     toStep2Btn.disabled = false;
 
-    // Desplazar suavemente hacia el botón "Continuar"
-    toStep2Btn.scrollIntoView({ behavior: 'smooth' });
+    // Desplazar suavemente hacia el botón "Continuar" solo si está fuera de la vista
+    setTimeout(() => {
+      const btnRect = toStep2Btn.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      
+      // Si el botón no está completamente visible
+      if (btnRect.bottom > viewportHeight - 20) {
+        toStep2Btn.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    }, 100);
   });
 });
 
