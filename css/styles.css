@@ -357,12 +357,34 @@ h2 {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 10002;
   transform: translateY(-10px);
   transition: all 0.3s ease;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  max-height: 300px;
+  max-height: 280px;
   overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 #232933;
+}
+
+/* Estilos personalizados para scrollbar en WebKit */
+.custom-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-options::-webkit-scrollbar-track {
+  background: #232933;
+  border-radius: 3px;
+}
+
+.custom-options::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 3px;
+}
+
+.custom-options::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
 }
 
 .custom-select.open .custom-options {
@@ -370,7 +392,23 @@ h2 {
   visibility: visible;
   pointer-events: all;
   transform: translateY(0);
-  z-index: 10002;
+  z-index: 10003;
+}
+
+/* Estilos especiales para la pantalla 21 donde puede haber muchos programas */
+#step-21 .custom-options {
+  max-height: 200px;
+}
+
+/* Ajuste dinámico cuando el dropdown está cerca del footer */
+.custom-select.near-footer .custom-options {
+  top: auto;
+  bottom: calc(100% + 8px);
+  transform: translateY(10px);
+}
+
+.custom-select.near-footer.open .custom-options {
+  transform: translateY(0);
 }
 
 .custom-option {
@@ -396,6 +434,31 @@ h2 {
 
 .custom-option:last-of-type {
   border-radius: 0 0 8px 8px;
+}
+
+.custom-option.no-data {
+  color: #9CA3AF;
+  font-style: italic;
+  cursor: default;
+  background: #1F2937;
+}
+
+.custom-option.no-data:hover {
+  background: #1F2937;
+}
+
+/* Mensaje personalizado para cuando no hay programas disponibles */
+.mensaje-sin-programas {
+  background: #f8f9fa !important;
+  border: 1px solid #dee2e6 !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin-top: 8px !important;
+  color: #6c757d !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  font-weight: 500 !important;
 }
 
 /* ==========================================================================
@@ -1483,6 +1546,24 @@ body.dropdown-open .next-btn {
 .next-btn {
   pointer-events: auto;
   opacity: 1;
+}
+
+/* Asegurar que el footer no interfiera con dropdowns */
+.form-footer {
+  z-index: 1000;
+}
+
+/* Overlay temporal cuando dropdown está abierto para evitar conflictos de z-index */
+.dropdown-open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 10001;
+  pointer-events: none;
 }
 
 /* Pantallas con imágenes grandes: aplica mismo estilo que pantalla 7 */

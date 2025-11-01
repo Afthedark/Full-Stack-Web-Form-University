@@ -1,0 +1,11 @@
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_35_736)">
+<path d="M1.5 6L10.25 6" stroke="#323741" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7 9.5L10.5 6L7 2.5" stroke="#323741" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_35_736">
+<rect width="12" height="12" fill="white" transform="translate(12) rotate(90)"/>
+</clipPath>
+</defs>
+</svg>

@@ -99,16 +99,11 @@
               <div class="arrow" aria-hidden="true"></div>
             </div>
             <div class="custom-options">
-              <span class="custom-option" data-value="medicina">Medicina</span>
-              <span class="custom-option" data-value="ingenieria">Ingeniería</span>
-              <span class="custom-option" data-value="finanzas">Finanzas</span>
+              <!-- Static options removed as dynamic loading is functional -->
             </div>
           </div>
           <select id="professionSelect" required class="hidden-select">
             <option value="">Selecciona una opción</option>
-            <option value="medicina">Medicina</option>
-            <option value="ingenieria">Ingeniería</option>
-            <option value="finanzas">Finanzas</option>
           </select>
         </div>
         <button type="button" class="next-btn" id="toStep4" disabled>
@@ -116,48 +111,22 @@
             <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
       </section>
-      <!-- Pantalla 4: Selección de posgrado -->
+      <!-- Pantalla 4: Selección de nivel de formación -->
       <section class="form-step" id="step-4">
-        <h2>¿Qué posgrado quieres hacer?</h2>
+        <h2>¿Qué nivel de formación quieres hacer?</h2>
         <div class="custom-select-wrapper">
           <div class="custom-select" data-select="postgraduateSelect">
             <div class="custom-select__trigger">
-              <span>Elige un posgrado o maestría</span>
+              <span>Selecciona un nivel de formación</span>
               <div class="arrow" aria-hidden="true"></div>
             </div>
             <div class="custom-options">
-              <span class="custom-option" data-value="cirugia-oral">Cirugía Oral y Maxilofacial</span>
-              <span class="custom-option" data-value="endodoncia">Endodoncia</span>
-              <span class="custom-option" data-value="medicina-critica">Especialización en Medicina Crítica y Cuidado Intensivo</span>
-              <span class="custom-option" data-value="higiene-industrial">Higiene Industrial</span>
-              <span class="custom-option" data-value="odontologia-pediatrica">Odontología Pediátrica Infantil</span>
-              <span class="custom-option" data-value="operatoria-dental">Operatoria Dental Estética y Materiales Dentales</span>
-              <span class="custom-option" data-value="ortodoncia">Ortodoncia</span>
-              <span class="custom-option" data-value="patologia-oral">Patología Oral y Medios Diagnósticos</span>
-              <span class="custom-option" data-value="periodoncia">Periodoncia y Medicina Oral</span>
-              <span class="custom-option" data-value="salud-familiar">Salud Familiar y Comunitaria</span>
-              <span class="custom-option" data-value="prostodoncia">Prostodoncia</span>
-              <span class="custom-option" data-value="seguridad-salud">Especialización en Seguridad y Salud en el Trabajo</span>
-              <span class="custom-option" data-value="marketing-farmaceutico">Especialización en Gerencia de Marketing Farmacéutico</span>
-              <span class="custom-option" data-value="seguridad-paciente">Especialización en Seguridad del Paciente</span>
+              <!-- Opciones dinámicas cargadas desde obtener_formacion.js -->
             </div>
           </div>
           <select id="postgraduateSelect" required class="hidden-select">
-            <option value="">Elige un posgrado o maestría</option>
-            <option value="cirugia-oral">Cirugía Oral y Maxilofacial</option>
-            <option value="endodoncia">Endodoncia</option>
-            <option value="medicina-critica">Especialización en Medicina Crítica y Cuidado Intensivo</option>
-            <option value="higiene-industrial">Higiene Industrial</option>
-            <option value="odontologia-pediatrica">Odontología Pediátrica Infantil</option>
-            <option value="operatoria-dental">Operatoria Dental Estética y Materiales Dentales</option>
-            <option value="ortodoncia">Ortodoncia</option>
-            <option value="patologia-oral">Patología Oral y Medios Diagnósticos</option>
-            <option value="periodoncia">Periodoncia y Medicina Oral</option>
-            <option value="salud-familiar">Salud Familiar y Comunitaria</option>
-            <option value="prostodoncia">Prostodoncia</option>
-            <option value="seguridad-salud">Especialización en Seguridad y Salud en el Trabajo</option>
-            <option value="marketing-farmaceutico">Especialización en Gerencia de Marketing Farmacéutico</option>
-            <option value="seguridad-paciente">Especialización en Seguridad del Paciente</option>
+            <option value="">Selecciona un nivel de formación</option>
+            <!-- Opciones dinámicas cargadas desde obtener_formacion.js -->
           </select>
         </div>
         <button type="button" class="next-btn" id="toStep5" disabled>
@@ -168,7 +137,7 @@
       
       <!-- Pantalla 5: Razón principal para estudiar -->
       <section class="form-step" id="step-5">
-        <h2>¿Cuál es la razón principal por la que deseas estudiar la Maestría en Epidemiología?</h2>
+        <h2>¿Cuál es la razón principal por la que deseas estudiar tu nivel de formación seleccionado?</h2>
         <p class="subtitle-small">Define tus objetivos para que tu aprendizaje sea más eficaz</p>
         
         <div class="checkbox-options">
@@ -209,15 +178,15 @@
           </label>
         </div>
 
-        <button type="submit" class="next-btn" id="toStep6" disabled>
+        <button type="button" class="next-btn" id="toStep6" disabled>
             <span>Continuar</span>
             <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
           </button>
       </section>
 
-      <!-- Pantalla 6: Seguridad sobre estudiar Maestría en Epidemiología -->
+      <!-- Pantalla 6: Seguridad sobre estudiar el nivel de formación seleccionado -->
       <section class="form-step" id="step-6">
-        <h2>¿Qué tan seguro estás<br>de querer estudiar<br>Maestría en Epidemiología?</h2>
+        <h2>¿Qué tan seguro estás<br>de querer estudiar<br>tu nivel de formación seleccionado?</h2>
         <div class="checkbox-options">
           <label class="checkbox-option">
             <input type="checkbox" name="seguridad" value="completamente-seguro">
@@ -431,7 +400,7 @@
           <h2>¿Cómo prefieres que sea la modalidad del posgrado?</h2>
           <div class="checkbox-options">
             <label class="checkbox-option">
-              <input type="checkbox" name="modality" value="presencial">
+              <input type="checkbox" name="modality" value="1">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
                 <img class="checkbox-icon" src="assets/svg/pantalla 12/1.svg" alt="Icono" width="24" height="24" />
@@ -440,7 +409,7 @@
             </label>
 
             <label class="checkbox-option">
-              <input type="checkbox" name="modality" value="hibrido">
+              <input type="checkbox" name="modality" value="4">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
                 <img class="checkbox-icon" src="assets/svg/pantalla 12/2.svg" alt="Icono" width="24" height="24" />
@@ -449,7 +418,7 @@
             </label>
 
             <label class="checkbox-option">
-              <input type="checkbox" name="modality" value="virtual">
+              <input type="checkbox" name="modality" value="3">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
                 <img class="checkbox-icon" src="assets/svg/pantalla 12/3.svg" alt="Icono" width="24" height="24" />
@@ -458,7 +427,7 @@
             </label>
 
             <label class="checkbox-option">
-              <input type="checkbox" name="modality" value="no-preferencia">
+              <input type="checkbox" name="modality" value="2">
               <span class="checkbox-custom"></span>
               <div class="checkbox-content">
                 <img class="checkbox-icon" src="assets/svg/pantalla 12/4.svg" alt="Icono" width="24" height="24" />
@@ -765,12 +734,55 @@
               <label for="celular" class="form-label">Número de celular</label>
               <input type="tel" id="celular" name="celular" class="form-input" placeholder="Ej: 3001234567" maxlength="20" autocomplete="tel" required>
             </div>
+
+            <div class="form-group">
+              <label class="form-label">Selecciona tu programa de interés</label>
+              <div class="custom-select-wrapper">
+                <div class="custom-select" data-select="programSelect">
+                  <div class="custom-select__trigger">
+                    <span>Selecciona un programa</span>
+                    <div class="arrow"></div>
+                  </div>
+                  <div class="custom-options">
+                    <!-- Las opciones se cargarán dinámicamente -->
+                  </div>
+                </div>
+                <select id="programSelect" class="hidden-select" required>
+                  <option value="">Selecciona un programa</option>
+                </select>
+              </div>
+            </div>
           </div>
 
-          <button type="submit" class="next-btn submit-btn" id="submitForm" disabled>
+          <button type="button" class="next-btn submit-btn" id="submitForm" disabled>
             <span>ENVIAR</span>
             <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Enviar" aria-hidden="true">
           </button>
+        </section>
+
+        <!-- Pantalla 22: Agradecimiento -->
+        <section class="form-step" id="step-22">
+          <div class="logo"></div>
+          <h2>¡Gracias por tu interés!</h2>
+          <p class="subtitle" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">
+            Hemos recibido tu información correctamente.<br><br>
+            Nuestro equipo de admisiones se pondrá en contacto contigo muy pronto<br>
+            para brindarte toda la información que necesitas sobre tu programa de interés.
+          </p>
+          <div style="display:flex; justify-content:center; margin: 32px 0;">
+            <img src="assets/img/logoubosque.png" alt="Universidad El Bosque" style="max-width: 180px; height: auto; opacity: 0.8;">
+          </div>
+          <div style="text-align: center; background: #f8f9fa; border-radius: 12px; padding: 20px; margin: 20px auto; max-width: 400px;">
+            <p style="margin: 0; color: #28a745; font-weight: 600; font-size: 16px;">
+              ✓ Formulario enviado exitosamente
+            </p>
+            <p style="margin: 8px 0 0 0; color: #6c757d; font-size: 14px;">
+              Te comunicaremos pronto.
+            </p>
+          </div>
+          <p style="text-align: center; color: #6c757d; font-size: 14px; margin-top: 20px; font-style: italic;">
+            ¡Tu futuro académico comienza aquí!
+          </p>
         </section>
     </form>
   </main>
@@ -783,6 +795,10 @@
     </p>
   </footer>
 
+  <script src="js/obtener_profesiones.js"></script>
+  <script src="js/obtener_formacion.js"></script>
+  <script src="js/cargar_programas.js"></script>
+  <script src="js/titulo_dinamico.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -220,7 +220,7 @@ toStep4Btn.addEventListener('click', () => {
         }
 
         // 3. Continuar a la siguiente pantalla
-        goToStep(6);
+        goToStep(7);
 
         // 4. Guardar datos para envío posterior
         // Ejemplo:
@@ -334,24 +334,26 @@ toStep4Btn.addEventListener('click', () => {
   // Pantalla 12: Modalidad preferida del posgrado (solo una opción)
   const modalityCheckboxes = document.querySelectorAll('input[name="modality"]');
   const toStep13Btn = document.getElementById('toStep13');
-  let selectedModalities = [];
+  let selectedModality = null;
 
   if (modalityCheckboxes.length && toStep13Btn) {
     modalityCheckboxes.forEach(checkbox => {
       checkbox.addEventListener('change', () => {
         if (checkbox.checked) {
+          // Solo una opción permitida, desmarcar las demás
           modalityCheckboxes.forEach(cb => { if (cb !== checkbox) cb.checked = false; });
         }
-        selectedModalities = Array.from(modalityCheckboxes)
-          .filter(cb => cb.checked)
-          .map(cb => cb.value);
-        toStep13Btn.disabled = selectedModalities.length === 0;
+        // Obtener la modalidad seleccionada (ID)
+        selectedModality = Array.from(modalityCheckboxes)
+          .find(cb => cb.checked)?.value || null;
+        
+        toStep13Btn.disabled = !selectedModality;
       });
     });
 
     toStep13Btn.addEventListener('click', () => {
-      if (selectedModalities.length > 0) {
-        goToStep(12);
+      if (selectedModality) {
+        goToStep(13);
       }
     });
   }
@@ -624,8 +626,27 @@ toStep4Btn.addEventListener('click', () => {
   
   if (toStep21Btn) {
     // Esta pantalla es informativa, el botón siempre está habilitado
-    toStep21Btn.addEventListener('click', () => {
+    toStep21Btn.addEventListener('click', async () => {
       goToStep(20);
+      
+      // Cargar programas automáticamente cuando se llega a la pantalla 21
+      const lineaId = professionSelect ? professionSelect.value : '';
+      const formacionId = postgraduateSelect ? postgraduateSelect.value : '';
+      const modalidadId = selectedModality;
+      
+      console.log('=== DEBUG PANTALLA 21 ===');
+      console.log('professionSelect.value:', professionSelect ? professionSelect.value : 'null');
+      console.log('postgraduateSelect.value:', postgraduateSelect ? postgraduateSelect.value : 'null');
+      console.log('selectedModality:', selectedModality);
+      console.log('Tipos:', typeof lineaId, typeof formacionId, typeof modalidadId);
+      
+      if (lineaId && formacionId && modalidadId) {
+        console.log('Cargando programas para pantalla 21...');
+        await cargarProgramasPorFiltros(lineaId, formacionId, modalidadId);
+      } else {
+        console.warn('No se pueden cargar programas: faltan datos de selección previa');
+        console.warn('lineaId:', lineaId, 'formacionId:', formacionId, 'modalidadId:', modalidadId);
+      }
     });
   }
 
@@ -654,8 +675,12 @@ toStep4Btn.addEventListener('click', () => {
     const isNameValid = nombreInput.value.trim().length >= 3;
     const isEmailValid = validateEmail(emailInput.value);
     const isPhoneValid = validatePhone(celularInput.value);
+    const programSelect = document.getElementById('programSelect');
     
-    submitFormBtn.disabled = !(isNameValid && isEmailValid && isPhoneValid);
+    // Permitir envío si no hay programa disponible o si se seleccionó uno
+    const isProgramSelected = window.noProgramaDisponible || (programSelect && programSelect.value !== '');
+    
+    submitFormBtn.disabled = !(isNameValid && isEmailValid && isPhoneValid && isProgramSelected);
   }
 
   if (nombreInput && emailInput && celularInput && submitFormBtn) {
@@ -666,11 +691,45 @@ toStep4Btn.addEventListener('click', () => {
       });
     });
 
+    // Agregar listener para el select de programa
+    const programSelect = document.getElementById('programSelect');
+    if (programSelect) {
+      programSelect.addEventListener('change', () => {
+        validateContactForm();
+      });
+    }
+
     submitFormBtn.addEventListener('click', async (e) => {
       e.preventDefault();
-      
       if (!submitFormBtn.disabled) {
-        // Recopilar todos los datos del formulario
+        // Cargar programas antes de enviar si no se ha hecho
+        const programSelect = document.getElementById('programSelect');
+        if (programSelect && (!programSelect.options.length || programSelect.options.length <= 1)) {
+          const lineaId = professionSelect ? professionSelect.value : '';
+          const formacionId = postgraduateSelect ? postgraduateSelect.value : '';
+          const modalidadId = selectedModality;
+          
+          if (lineaId && formacionId && modalidadId) {
+            await cargarProgramasPorFiltros(lineaId, formacionId, modalidadId);
+          }
+        }
+
+        // Validar que se haya seleccionado un programa o que no haya programas disponibles
+        const selectedProgramName = document.querySelector('.custom-select[data-select="programSelect"] .custom-select__trigger span')?.textContent;
+        
+        let programaParaEnviar = '';
+        
+        if (window.noProgramaDisponible) {
+            // Si no hay programas disponibles, enviar cadena vacía
+            programaParaEnviar = '';
+        } else if (!selectedProgramName || selectedProgramName === 'Selecciona un programa') {
+            alert('Por favor, selecciona un programa de interés.');
+            return;
+        } else {
+            // Si hay programa seleccionado, enviarlo
+            programaParaEnviar = selectedProgramName;
+        }
+
         const formData = {
           age: selectedAge,
           gender: genderSelect ? genderSelect.value : '',
@@ -681,30 +740,29 @@ toStep4Btn.addEventListener('click', () => {
           stress: selectedStress,
           study_comfort: selectedStudyComfort,
           learning_methods: selectedLearningMethods,
-          modalities: selectedModalities,
+          modalities: selectedModality,
           challenges: selectedChallenges,
           future_vision: selectedFutureVisions,
           difficulty_response: selectedDifficultyResponses,
           start_date: document.getElementById('fecha_seleccionada').value,
           financing: selectedFinancing,
+          programa: programaParaEnviar, // Usar la variable que maneja ambos casos
           contact: contactData
         };
 
         try {
-          // Aquí iría el código para enviar los datos al servidor
-          console.log('Datos del formulario:', formData);
-          // Ejemplo de envío:
-          // const response = await fetch('/api/submit-form', {
-          //   method: 'POST',
-          //   headers: { 'Content-Type': 'application/json' },
-          //   body: JSON.stringify(formData)
-          // });
-          
-          // Mostrar mensaje de éxito
-          alert('¡Gracias por completar el formulario! Nos pondremos en contacto contigo pronto.');
-          
-          // Opcional: redirigir a una página de agradecimiento
-          // window.location.href = '/gracias.html';
+          const response = await fetch('backend/guardar_formulario_ajax.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+          const result = await response.json();
+          if (result.success) {
+            // Navegar a la pantalla de agradecimiento (step-22 = índice 21)
+            goToStep(21);
+          } else {
+            alert('Error al guardar: ' + (result.error || 'Intenta nuevamente.'));
+          }
         } catch (error) {
           console.error('Error al enviar el formulario:', error);
           alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
@@ -724,7 +782,7 @@ toStep4Btn.addEventListener('click', () => {
 
   function goToStep(stepIndex) {
     if (stepIndex < 0 || stepIndex >= steps.length) {
-      console.error('Índice de paso inválido');
+      console.error('Índice de paso inválido:', stepIndex, 'Total steps:', steps.length);
       return;
     }
 
@@ -733,12 +791,12 @@ toStep4Btn.addEventListener('click', () => {
     currentStep = stepIndex;
     updateProgress();
 
-    // Ocultar barra de progreso en pantallas 1, 7, 10, 13, 20
+    // Ocultar barra de progreso en pantallas 1, 7, 10, 13, 20, 22
     const mainContainer = document.querySelector('.form-container');
     const headerContainer = document.querySelector('.header-container');
     const footer = document.querySelector('.form-footer');
     const body = document.body;
-    const hideProgressScreens = [0, 6, 9, 12, 19]; // 0-based: 1,7,10,13,20
+    const hideProgressScreens = [0, 6, 9, 12, 19, 21]; // 0-based: 1,7,10,13,20,22
     if (mainContainer) {
       if (hideProgressScreens.includes(stepIndex)) {
         mainContainer.classList.add('hide-progress-bar');
@@ -749,7 +807,7 @@ toStep4Btn.addEventListener('click', () => {
 
     // Cambios de fondo para las pantallas específicas
     if (mainContainer && headerContainer && footer && body) {
-      const specialBackgroundScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20];
+      const specialBackgroundScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20, 21]; // Incluir pantalla 22
       if (specialBackgroundScreens.includes(stepIndex)) {
         mainContainer.style.background = 'linear-gradient(180deg, #F8F4F0 0%, #DDD0C8 100%)';
         footer.style.background = '#DDD0C8';
@@ -786,7 +844,7 @@ toStep4Btn.addEventListener('click', () => {
 
   // Oculta la barra de progreso si la pantalla inicial es una de las que la requiere oculta
   const mainContainer = document.querySelector('.form-container');
-  const hideProgressScreens = [0, 6, 9, 12, 19]; // 0-based: 1,7,10,13,20
+  const hideProgressScreens = [0, 6, 9, 12, 19, 21]; // 0-based: 1,7,10,13,20,22
   if (mainContainer && hideProgressScreens.includes(currentStep)) {
     mainContainer.classList.add('hide-progress-bar');
   }
@@ -794,7 +852,7 @@ toStep4Btn.addEventListener('click', () => {
   // Manejador para adaptar el header cuando cambia el tamaño de la ventana
   window.addEventListener('resize', () => {
     const headerContainer = document.querySelector('.header-container');
-    const specialBackgroundScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20];
+    const specialBackgroundScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20, 21]; // Incluir pantalla 22
     if (headerContainer && specialBackgroundScreens.includes(currentStep)) {
       headerContainer.style.setProperty('background', 'transparent', 'important');
       console.log('Header resize aplicado transparente:', currentStep);
@@ -803,7 +861,7 @@ toStep4Btn.addEventListener('click', () => {
   
   // Aplicar estilo inicial del header si estamos en una pantalla especial
   const initialHeaderContainer = document.querySelector('.header-container');
-  const initialSpecialScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20];
+  const initialSpecialScreens = [1, 2, 3, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 18, 19, 20, 21]; // Incluir pantalla 22
   if (initialHeaderContainer && initialSpecialScreens.includes(currentStep)) {
     initialHeaderContainer.style.setProperty('background', 'transparent', 'important');
     console.log('Header inicial aplicado transparente:', currentStep);
