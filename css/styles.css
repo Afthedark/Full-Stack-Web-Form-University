@@ -1,0 +1,1867 @@
+/* Imagen-botón para pantalla 10: sin bordes, sin reducción, aspecto nativo */
+.image-btn {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  max-width: 320px;
+}
+.image-btn img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+}
+.age-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  background: none;
+  padding: 12px 8px;
+  min-height: 180px;
+}
+
+.age-img {
+  display: block;
+  width: 130px;
+  height: 140px;
+  margin-bottom: 12px;
+  box-shadow: none;
+  transition: none;
+  position: relative;
+  opacity: 1;
+  overflow: hidden;
+}
+
+.age-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.age-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: center;
+  margin-top: 4px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+/* Oculta la barra de progreso en pantallas informativas */
+.form-container.hide-progress-bar .progress-bar {
+  display: none !important;
+}
+/* ==========================================================================
+   1. Global Styles & Variables
+   ========================================================================== */
+:root {
+  --color-primary: #00473e;
+  --color-secondary: #f5f5f5;
+  --color-accent: #ffb800;
+  --color-text: #1a1a1a;
+  --color-bg: #fff;
+  --color-progress: #013237;
+  --color-btn: #00473e;
+  --color-btn-text: #fff;
+  --color-border: #e0e0e0;
+  --Color-CAJAS-PREGUNTAS: #B0A89F40;
+  /* Extras para calendario y tonos */
+  --color-text-light: #6b7280;
+  --color-text-lighter: #9ca3af;
+  --color-light: #f3f4f6;
+  --color-primary-dark: #00352f;
+  --font-family: 'Montserrat', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   2. Main Layout & Form Container
+   ========================================================================== */
+.form-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 40px auto;
+  background: var(--color-bg);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 120px 32px 80px 32px;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+}
+
+.form-step {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s;
+}
+
+.form-step.active {
+  display: flex;
+}
+
+/* ==========================================================================
+   3. Header Elements (Logo & Progress Bar)
+   ========================================================================== */
+.header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.logo {
+  width: 100%;
+  max-width: 100px;
+  margin-bottom: 15px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.progress-bar {
+  width: 295px;
+  height: 6px;
+  background-color: #f0f0f0;
+  margin-bottom: 0;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #013237;
+  width: 16%;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   4. Typography
+   ========================================================================== */
+h2 {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--color-primary);
+  margin: 0 0 12px 0;
+  /* leading-trim: NONE; no es estándar CSS, omitido */
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+  color: var(--color-primary);
+}
+
+.subtitle-small {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  color: #666;
+  margin-bottom: 24px;
+  /* leading-trim: NONE; no es estándar CSS, omitido */
+}
+
+/* ==========================================================================
+   5. Component: Age Selection Buttons
+   ========================================================================== */
+.age-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Pantalla 1: sin borde por defecto, solo visible al seleccionar */
+#step-1 .age-btn {
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 18px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+#step-1 .age-btn.selected,
+#step-1 .age-btn:focus {
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.age-btn.selected,
+.age-btn:focus {
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* ==========================================================================
+   6. Component: Custom Select Dropdown
+   ========================================================================== */
+.hidden-select {
+  display: none;
+}
+
+.custom-select-wrapper {
+  position: relative;
+  width: 298px;
+  margin: 0 auto 24px auto;
+  left: unset;
+  transform: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  z-index: 100;
+}
+
+.custom-select__trigger {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  height: 56px;
+  width: 100%;
+  font-size: 1rem;
+  color: #fff;
+  background: #232933;
+  cursor: pointer;
+  border-radius: 8px;
+  gap: 8px;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.custom-select__trigger span {
+  font-weight: 400;
+}
+
+.custom-select.open {
+  z-index: 10000;
+}
+
+.custom-select.open .custom-select__trigger {
+  border-radius: 12px;
+  z-index: 10001;
+}
+
+.arrow {
+  position: relative;
+  height: 12px;
+  width: 12px;
+  margin-left: 16px;
+}
+
+.arrow::before,
+.arrow::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  width: 0.15rem;
+  height: 100%;
+  transition: all 0.3s;
+  background-color: #fff;
+}
+
+.arrow::before {
+  left: -4px;
+  transform: rotate(45deg);
+}
+
+.arrow::after {
+  left: 4px;
+  transform: rotate(-45deg);
+}
+
+.open .arrow::before {
+  transform: rotate(-45deg);
+}
+
+.open .arrow::after {
+  transform: rotate(45deg);
+}
+
+.custom-options {
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: calc(100% + 8px);
+  left: 0;
+  border-radius: 8px;
+  background: #232933;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 10002;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  max-height: 280px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 #232933;
+}
+
+/* Estilos personalizados para scrollbar en WebKit */
+.custom-options::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-options::-webkit-scrollbar-track {
+  background: #232933;
+  border-radius: 3px;
+}
+
+.custom-options::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 3px;
+}
+
+.custom-options::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+.custom-select.open .custom-options {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateY(0);
+  z-index: 10003;
+}
+
+/* Estilos especiales para la pantalla 21 donde puede haber muchos programas */
+#step-21 .custom-options {
+  max-height: 200px;
+}
+
+/* Ajuste dinámico cuando el dropdown está cerca del footer */
+.custom-select.near-footer .custom-options {
+  top: auto;
+  bottom: calc(100% + 8px);
+  transform: translateY(10px);
+}
+
+.custom-select.near-footer.open .custom-options {
+  transform: translateY(0);
+}
+
+.custom-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  height: 56px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-option:hover,
+.custom-option.selected {
+  background: #374151;
+}
+
+.custom-option:first-of-type {
+  border-radius: 8px 8px 0 0;
+}
+
+.custom-option:last-of-type {
+  border-radius: 0 0 8px 8px;
+}
+
+.custom-option.no-data {
+  color: #9CA3AF;
+  font-style: italic;
+  cursor: default;
+  background: #1F2937;
+}
+
+.custom-option.no-data:hover {
+  background: #1F2937;
+}
+
+/* Mensaje personalizado para cuando no hay programas disponibles */
+.mensaje-sin-programas {
+  background: #f8f9fa !important;
+  border: 1px solid #dee2e6 !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin-top: 8px !important;
+  color: #6c757d !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+  font-weight: 500 !important;
+}
+
+/* ==========================================================================
+   7. Component: Selection options (shared for checkboxes & radio lists)
+   ========================================================================== */
+/* Container for option lists used by multiple screens (aliases included) */
+.checkbox-options,
+.stress-options,
+.options-list {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Base styling for each selectable option (checkboxes/radios) */
+.checkbox-option,
+.stress-option,
+.option-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--Color-CAJAS-PREGUNTAS, #B0A89F40);
+  border: 2px solid #DAD1CA;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checkbox-option:hover,
+.stress-option:hover,
+.option-item:hover {
+  background: var(--Color-CAJAS-PREGUNTAS, #B0A89F40);
+  border-color: #DAD1CA;
+}
+
+/* Hide native inputs but keep them focusable and usable */
+.checkbox-option input[type="checkbox"],
+.stress-option input[type="radio"],
+.option-item input[type="checkbox"],
+.option-item input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Shared content area inside an option */
+.checkbox-content,
+.stress-content,
+.option-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+/* Shared icon and text styles */
+.checkbox-icon,
+.stress-icon,
+.option-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  color: #6B7280;
+  stroke-width: 2;
+}
+
+.checkbox-text,
+.stress-text,
+.option-text {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.4;
+}
+
+/* Shared marker (checkbox square / radio circle) */
+.checkbox-custom,
+.radio-mark,
+.option-mark {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid #D1D5DB;
+  margin-left: 12px;
+  background: #fff;
+  transition: all 0.2s ease;
+  order: 2;
+}
+
+.checkbox-custom {
+  border-radius: 4px;
+}
+
+.radio-mark {
+  border-radius: 50%;
+}
+
+/* Checked states */
+.checkbox-option input[type="checkbox"]:checked ~ .checkbox-custom {
+  background: #232933;
+  border-color: #232933;
+}
+
+.checkbox-option input[type="checkbox"]:checked ~ .checkbox-custom::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.stress-option input[type="radio"]:checked ~ .radio-mark {
+  border-color: #232933;
+}
+
+.stress-option input[type="radio"]:checked ~ .radio-mark::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #232933;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Change icon/text color when selected */
+.checkbox-option input[type="checkbox"]:checked ~ .checkbox-content .checkbox-icon,
+.stress-option input[type="radio"]:checked ~ .stress-content .stress-icon {
+  color: #232933;
+}
+
+.checkbox-option input[type="checkbox"]:checked ~ .checkbox-content .checkbox-text,
+.stress-option input[type="radio"]:checked ~ .stress-content .stress-text {
+  color: #232933;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   8. Component: Navigation Button
+   ========================================================================== */
+.next-btn {
+  width: 116px;
+  height: 36px;
+  padding: 8px;
+  background: transparent;
+  color: #323741;
+  border: 1px solid #013237;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 24px auto 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.next-btn span {
+  display: inline-block;
+  text-transform: uppercase;
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  /* leading-trim: NONE; no es estándar CSS, omitido */
+}
+
+.next-btn .arrow-icon {
+  width: 20px;
+  height: 20px;
+  fill: #323741;
+  transition: transform 0.2s ease;
+}
+
+.next-btn:hover {
+  background: transparent;
+  border-color: #013237;
+}
+
+.next-btn:hover .arrow-icon {
+  transform: translateX(2px);
+}
+
+.next-btn:disabled {
+  background: #F3F4F6;
+  color: #9CA3AF;
+  border-color: #013237;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.next-btn:disabled .arrow-icon {
+  opacity: 0.5;
+  fill: #9CA3AF;
+}
+
+/* Botón de envío - última pantalla */
+.submit-btn {
+  /* El botón de envío mantiene la estructura pero sin los cambios de dimensiones */
+  width: auto;
+  min-width: 116px;
+  height: auto;
+  padding: 8px 16px;
+}
+
+/* .submit-btn span hereda todos los estilos de texto de .next-btn span */
+
+/* ==========================================================================
+   8B. Component: Contact Form Fields
+   ========================================================================== */
+.contact-form {
+  width: 100%;
+  max-width: 350px;
+  margin: 24px auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.form-input::placeholder {
+  color: var(--color-text-light);
+}
+
+.form-input:invalid:not(:placeholder-shown) {
+  border-color: #ef4444;
+}
+
+.form-input:valid {
+  border-color: #10b981;
+}
+
+/* ==========================================================================
+   8C. Component: Professor Card
+   ========================================================================== */
+.professor-card {
+  background: var(--color-secondary);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px auto;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.professor-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  object-fit: cover;
+  border: 4px solid var(--color-primary);
+}
+
+.professor-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.professor-title {
+  font-size: 1rem;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+}
+
+.professor-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   8D. Component: Financing Options
+   ========================================================================== */
+.financing-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 24px auto;
+  max-width: 900px;
+}
+
+.financing-card {
+  background: var(--color-secondary);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.financing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.financing-card.selected {
+  border-color: var(--color-primary);
+  background: #fff;
+}
+
+.financing-icon {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.financing-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-text);
+}
+
+.financing-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-light);
+  margin-bottom: 16px;
+}
+
+.financing-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   9. Step Specific Overrides
+   ========================================================================== */
+#step-6 h2 {
+  margin-bottom: 0.5em;
+}
+
+#step-6 .checkbox-options {
+  margin-top: 24px;
+}
+
+#toStep7 {
+  margin-top: 18px;
+}
+
+
+
+/* Estilos específicos para la pantalla 7 */
+#step-7 {
+  text-align: center;
+}
+
+#step-7 h2 {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  font-size: 1.35rem;
+}
+
+#step-7 .subtitle {
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.teacher-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 24px auto;
+  width: 100%;
+  max-width: 320px;
+}
+
+.teacher-image img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================================================================
+   9B. Calendar (Pantalla 18) - Base Styles (aplica a todos los breakpoints) */
+/* ========================================================================== */
+.calendar-container {
+  font-family: var(--font-family);
+  width: 100%;
+  max-width: 340px;
+  margin: 12px auto 10px;
+  background-color: var(--color-secondary);
+  padding: 8px 8px 12px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  position: relative;
+  transition: box-shadow .25s ease;
+}
+
+.calendar-container:focus-within,
+.calendar-container:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.10); }
+
+.calendar-header {
+  background: #232933;
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: .25px;
+  user-select: none;
+}
+.calendar-header span#displayDate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+.calendar-arrow { font-size: 14px; transition: transform .25s ease; }
+.calendar-arrow.open { transform: rotate(180deg); }
+
+.calendar-body {
+  background: #ffffff;
+  margin-top: 4px;
+  padding: 12px 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  display: none;
+  animation: fadeIn .25s ease;
+}
+.calendar-body.show { display: block; }
+
+.calendar-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: .95rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  background: var(--color-light);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 8px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  transition: background .2s;
+}
+.nav-button:hover { background: #e7e9ec; }
+.nav-button:active { background: #dde0e3; }
+
+.year-selector {
+  background: var(--color-light);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 84px;
+}
+
+#monthName { min-width: 72px; text-align: left; }
+
+.calendar-weekdays,
+.calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.calendar-weekdays { margin: 4px 0 6px; font-size: 11px; font-weight: 600; color: var(--color-text-light); text-align: center; }
+.calendar-days { min-height: 180px; }
+
+.calendar-day {
+  font-size: 13px;
+  padding: 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  background: #fff;
+  border: 1px solid transparent;
+  transition: background .15s, color .15s, border-color .15s;
+  min-height: 38px;
+}
+.calendar-day.other-month { color: var(--color-text-lighter); }
+.calendar-day.today { border-color: var(--color-accent); font-weight: 600; }
+.calendar-day:hover { background: var(--color-light); }
+.calendar-day.selected { background: var(--color-primary); color: #fff; font-weight: 600; }
+
+/* Responsive refinamientos específicos */
+@media (max-width: 600px) {
+  #step-18 h2 { font-size: 1.2rem; margin-top: 0; margin-bottom: 16px; }
+  .calendar-container { max-width: 100%; padding: 8px 8px 12px; }
+  .calendar-header { font-size: 0.9rem; padding: 12px 14px; }
+  .calendar-header span#displayDate { max-width: 200px; }
+  .calendar-title { gap: 8px; }
+  .year-selector { min-width: 90px; }
+  .calendar-weekdays { gap: 2px; font-size: 10px; }
+  .calendar-days { gap: 2px; }
+  .calendar-day { min-height: 40px; font-size: 12px; border-radius: 6px; }
+  
+  /* Asegurar que los elementos del formulario tengan suficiente espacio */
+  .form-step {
+    width: 100%;
+    max-width: none;
+  }
+  
+  /* Mejorar la visualización de las opciones checkbox en móvil */
+  .checkbox-options {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-option {
+    padding: 12px;
+  }
+  
+  .checkbox-text {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  
+  /* Ajustar las opciones de edad en móvil */
+  .age-options {
+    gap: 16px;
+    margin-bottom: 24px;
+    max-width: 320px;
+  }
+  
+  .age-btn {
+    padding: 16px 8px;
+    min-height: 170px;
+  }
+  
+  .age-img {
+    width: 120px;
+    height: 130px;
+    margin-bottom: 12px;
+  }
+  
+  .age-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .age-label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+}
+
+/* ==========================================================================
+   10. Footer
+   ========================================================================== */
+.form-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.terms-text {
+  color: #666;
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  /* leading-trim: NONE; no es estándar CSS, omitido */
+}
+
+/* ==========================================================================
+   11. Animations
+   ========================================================================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* ==========================================================================
+   12. Media Queries & Responsive Design
+   ========================================================================== */
+
+/* Mobile devices */
+@media (max-width: 600px) {
+  .form-container {
+    max-width: 100vw;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 180px 16px 80px 16px;
+    margin: 0;
+    justify-content: flex-start;
+  }
+  .logo {
+    max-width: 90px;
+  }
+  .header-container {
+    top: 20px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background-color: transparent !important;
+    margin-bottom: 40px;
+  }
+  .progress-bar {
+    width: 80%;
+    max-width: 295px;
+    margin: 40px auto 0;
+    background-color: #fff;
+    border: 1.5px solid #d1d5db;
+  }
+  h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  .subtitle-small {
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+  .next-btn {
+    font-size: 1rem;
+    padding: 12px 16px;
+    margin: 32px auto 0 auto;
+    position: relative;
+    z-index: 10;
+  }
+  select {
+    font-size: 1rem;
+    padding: 14px;
+  }
+  
+  /* Asegurar que el botón continuar sea visible en pantalla 1 */
+  #step-1 .next-btn {
+    margin-top: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Ajustar espaciado de las opciones de edad */
+  .age-options {
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+  
+  .age-btn {
+    padding: 16px 8px;
+  }
+  
+  .age-img {
+    width: 130px;
+    height: 140px;
+    margin-bottom: 12px;
+  }
+  
+  .age-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .age-label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  
+  /* Mejorar el espaciado del formulario de contacto */
+  .contact-form {
+    margin: 24px auto 28px;
+  }
+  
+  /* Espaciado específico para pantallas con barra de progreso visible */
+  .form-step:not(#step-1):not(#step-7):not(#step-10):not(#step-13):not(#step-20) {
+    margin-top: 24px;
+  }
+  
+  /* Espaciado especial para la pantalla de contacto */
+  #step-21 {
+    margin-top: 28px;
+  }
+  
+  #step-21 h2 {
+    margin-bottom: 28px;
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+  
+  /* Espaciado específico para opciones checkbox */
+  .checkbox-options {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .checkbox-option {
+    padding: 14px;
+  }
+  
+  /* Ajustes específicos para selectores en móvil */
+  .custom-select-wrapper {
+    z-index: 200;
+  }
+  
+  .custom-select.open {
+    z-index: 9998;
+  }
+  
+  .custom-select.open .custom-select__trigger {
+    z-index: 9999;
+  }
+  
+  .custom-select.open .custom-options {
+    z-index: 10000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Asegurar que el botón continuar no interfiera */
+  .next-btn {
+    z-index: 1 !important;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .form-container {
+    max-width: 600px;
+    min-height: 80vh;
+    padding: 32px 40px 24px 40px;
+    margin: 40px auto;
+  }
+  .progress-bar {
+    width: 90%;
+    max-width: 295px;
+    margin: 20px auto 0;
+      background-color: #fff;
+      border: 1.5px solid #d1d5db;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  body {
+    background: linear-gradient(120deg, #f5f5f5 0%, #e9ecef 100%);
+  }
+  /* En pantallas grandes hacemos que el header participe en el flujo
+     del documento para evitar solapamientos con los títulos. */
+  .header-container {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin-bottom: 18px;
+    align-items: center;
+    padding: 15px 0;
+    width: 100%;
+  }
+  .progress-bar {
+    width: 100%;
+    max-width: 295px;
+    margin: 20px auto 0;
+  }
+
+  .form-container {
+    max-width: 700px;
+    min-height: 700px;
+    /* Padding restaurado: el header ahora deja espacio en el flujo */
+    padding: 48px 64px 32px 64px;
+    margin: 60px auto;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  }
+  .logo {
+    max-width: 140px;
+  }
+  h2 {
+    font-size: 1.6rem;
+    margin-top: 0;
+  }
+  .next-btn, select {
+    font-size: 1.1rem;
+    padding: 18px;
+  }
+
+  /* Desktop refinements para calendario */
+  .calendar-container { max-width: 380px; }
+  .calendar-day { min-height: 42px; font-size: 14px; }
+}
+
+/* Adjustments for specific components on larger screens */
+@media (min-width: 768px) {
+  .form-footer {
+    background: #fff;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+    width: 700px;
+    max-width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+     padding: 10px 18px;
+    border-top: none;
+  }
+
+  .terms-text {
+    font-size: 12px;
+    color: #444;
+  }
+  
+  #multiStepForm {
+    padding-bottom: 100px;
+  }
+  
+  .form-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    padding: 30px;
+  }
+
+  .progress-bar {
+    width: 100%;
+    max-width: 295px;
+    margin: 20px auto 30px;
+  }
+
+  .logo {
+    max-width: 120px;
+    margin-bottom: 30px;
+  }
+}
+
+/* Large desktop screens */
+@media (min-width: 1200px) {
+  .form-footer {
+     padding: 12px 18px;
+    max-width: 800px;
+    background: #fff;
+    box-shadow: 0 -2px 20px rgba(0,0,0,0.05);
+  }
+  
+  .terms-text {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 320px) {
+  .form-container {
+    padding: 170px 12px 80px 12px;
+  }
+  
+  .header-container {
+    margin-bottom: 35px;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    margin: 35px auto 0;
+  }
+  
+  .age-options {
+    gap: 14px;
+    margin-bottom: 20px;
+    max-width: 300px;
+  }
+  
+  .age-btn {
+    padding: 12px 6px;
+    min-height: 155px;
+  }
+  
+  .age-img {
+    width: 105px;
+    height: 115px;
+    margin-bottom: 8px;
+  }
+  
+  .age-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .age-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  
+  .checkbox-text {
+    font-size: 0.85rem;
+  }
+  
+  .next-btn {
+    width: 110px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+  
+  .custom-select-wrapper {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  /* Espaciado específico para formulario de contacto en pantallas pequeñas */
+  .contact-form {
+    margin: 20px auto 24px;
+  }
+  
+  .checkbox-options {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  
+  /* Espaciado específico para pantallas con barra de progreso visible */
+  .form-step:not(#step-1):not(#step-7):not(#step-10):not(#step-13):not(#step-20) {
+    margin-top: 20px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .form-container {
+    padding: 120px 16px 60px 16px;
+  }
+  
+  .header-container {
+    top: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .progress-bar {
+    margin: 30px auto 0;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+  
+  .subtitle {
+    margin-bottom: 16px;
+  }
+  
+  .age-options {
+    gap: 12px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  
+  .age-btn {
+    padding: 10px 6px;
+    min-height: 130px;
+  }
+  
+  .age-img {
+    width: 95px;
+    height: 105px;
+    margin-bottom: 6px;
+  }
+  
+  .age-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .age-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  .checkbox-options {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  
+  .next-btn {
+    margin-top: 20px;
+  }
+  
+  /* Espaciado específico para pantallas con barra de progreso visible */
+  .form-step:not(#step-1):not(#step-7):not(#step-10):not(#step-13):not(#step-20) {
+    margin-top: 16px;
+  }
+}
+
+/* Extra rule to ensure dropdown always appears on top */
+.custom-select.open {
+  z-index: 10000 !important;
+}
+
+.custom-select.open .custom-options {
+  z-index: 10002 !important;
+}
+
+/* Prevent any interference from other elements when dropdown is open */
+body.dropdown-open .next-btn {
+  z-index: 1 !important;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Re-enable pointer events when dropdown is closed */
+.next-btn {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Asegurar que el footer no interfiera con dropdowns */
+.form-footer {
+  z-index: 1000;
+}
+
+/* Overlay temporal cuando dropdown está abierto para evitar conflictos de z-index */
+.dropdown-open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 10001;
+  pointer-events: none;
+}
+
+/* Pantallas con imágenes grandes: aplica mismo estilo que pantalla 7 */
+#step-10 .logo,
+#step-13 .logo,
+#step-16 .logo,
+#step-20 .logo {
+  margin-bottom: 0px;
+}
+#step-10 h2,
+#step-13 h2,
+#step-16 h2,
+#step-20 h2 {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  font-size: 1.35rem;
+}
+#step-10 .teacher-image,
+#step-13 .technology-image,
+#step-16 .teacher-image,
+#step-20 .teachers-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 24px auto;
+  width: 100%;
+  max-width: 320px;
+}
+#step-10 .teacher-image img,
+#step-13 .technology-image img,
+#step-16 .teacher-image img,
+#step-20 .teachers-image img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  object-fit: cover;
+  display: block;
+}
+#step-10 .subtitle,
+#step-13 .subtitle,
+#step-16 .subtitle,
+#step-20 .subtitle {
+  margin-bottom: 24px;
+}
+
+/* Clase para mostrar el botón después de la carga */
+.button-visible {
+  display: flex !important;
+}
+
+.container-hidden {
+  display: none !important;
+}
+
+/* Estado inicial del botón en pantalla 22 - OCULTO */
+#step-22 #toStep23 {
+  display: none !important;
+}
+
+/* Forzar visibilidad del botón cuando tiene la clase button-visible */
+#step-22 #toStep23.button-visible {
+  display: flex !important;
+}
+
+/* Estilo naranja para el botón de la pantalla 22 */
+.btn-orange {
+  background: #FB6402 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 14px 32px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 12px rgba(251, 100, 2, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-orange:hover {
+  background: #E55A02 !important;
+  box-shadow: 0 6px 16px rgba(251, 100, 2, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+.btn-orange:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(251, 100, 2, 0.3) !important;
+}
+
+.btn-orange .arrow-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Screen 23 - Program Results Styles - Actualizado según imagen */
+#step-23.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px 100px;
+  min-height: 100vh;
+}
+
+.step-23-header {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+#step-23 .logo-container {
+  margin-bottom: 30px;
+}
+
+#step-23 .logo-container img {
+  height: 60px;
+  width: auto;
+}
+
+#step-23 .results-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.programs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 20px;
+}
+
+.program-card {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  transition: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.program-card:hover {
+  box-shadow: none;
+}
+
+.program-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.program-name {
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #1a1a1a;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.program-card .university-logo {
+  display: none;
+}
+
+.btn-info-orange {
+  background-color: #FB6402;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  font-family: 'Acherus Grotesque', sans-serif;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 0 2px 6px rgba(251, 100, 2, 0.25);
+  vertical-align: middle;
+  min-width: 160px;
+}
+
+.btn-info-orange:hover {
+  background-color: #E85F00;
+  box-shadow: 0 3px 10px rgba(251, 100, 2, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-info-orange:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(255, 107, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #step-23.active {
+    padding: 25px 15px 80px;
+  }
+
+  .step-23-header {
+    margin-bottom: 30px;
+    max-width: 350px;
+  }
+
+  #step-23 .logo-container {
+    margin-bottom: 25px;
+  }
+
+  #step-23 .logo-container img {
+    height: 50px;
+  }
+
+  #step-23 .results-title {
+    font-size: 20px;
+  }
+
+  .programs-container {
+    padding: 0 15px;
+    max-width: 350px;
+    gap: 24px;
+  }
+
+  .program-card {
+    gap: 16px;
+  }
+
+  .program-name {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .program-card .university-logo {
+    height: 30px;
+  }
+
+  .btn-info-orange {
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 20px;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  #step-23.active {
+    padding: 20px 10px 70px;
+  }
+
+  .step-23-header {
+    max-width: 300px;
+  }
+
+  #step-23 .results-title {
+    font-size: 18px;
+  }
+
+  .programs-container {
+    max-width: 320px;
+    gap: 24px;
+  }
+
+  .program-card {
+    gap: 16px;
+  }
+
+  .program-name {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  
+  .btn-info-orange {
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 20px;
+    min-width: 160px;
+  }
+}
+

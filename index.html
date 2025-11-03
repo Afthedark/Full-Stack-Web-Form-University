@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="description" content="Formulario de admisión para posgrados en la Universidad El Bosque. Completa tus datos y da el siguiente paso en tu futuro profesional."/>
+  <meta name="theme-color" content="#00473e"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <title>Formulario Universidad El Bosque</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+  <main class="form-container">
+    <header class="header-container">
+      <div class="logo">
+        <img src="assets/img/LogoUbosque.svg" alt="Logo Universidad El Bosque">
+      </div>
+      <div class="progress-bar">
+        <div class="progress" role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </header>
+    
+    <form id="multiStepForm">
+      <!-- Pantalla 1: Selección de edad -->
+      <section class="form-step active" id="step-1">
+        <h2>¡Muévete hacia tu futuro profesional!</h2>
+        <p class="subtitle">¿Cuál es tu edad?</p>
+        <div class="age-options">
+          <button type="button" class="age-btn" data-age="18-24">
+            <span class="age-img">
+              <!-- Agrega aquí la imagen para 18-24 si lo deseas -->
+              <img src="assets/img/edad1.png" alt="18-24 años">
+            </span>
+            <span class="age-label">18-24</span>
+          </button>
+          <button type="button" class="age-btn" data-age="25-34">
+            <span class="age-img">
+              <!-- Agrega aquí la imagen para 25-34 si lo deseas -->
+              <img src="assets/img/edad2.png" alt="25-34 años">
+            </span>
+            <span class="age-label">25-34</span>
+          </button>
+          <button type="button" class="age-btn" data-age="35-44">
+            <span class="age-img">
+              <!-- Agrega aquí la imagen para 35-44 si lo deseas -->
+              <img src="assets/img/edad3.png" alt="35-44 años">
+            </span>
+            <span class="age-label">35-44</span>
+          </button>
+          <button type="button" class="age-btn" data-age="45+">
+            <span class="age-img">
+              <!-- Agrega aquí la imagen para 45+ si lo deseas -->
+              <img src="assets/img/edad4.png" alt="45 años o más">
+            </span>
+            <span class="age-label">45+</span>
+          </button>
+        </div>
+        <button type="button" class="next-btn" id="toStep2" disabled>
+            <span>Continuar</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+      </section>
+      <!-- Pantalla 2: Selección de género -->
+      <section class="form-step" id="step-2">
+        <h2>¿Cuál es tu género?</h2>
+        <div class="custom-select-wrapper">
+          <div class="custom-select" data-select="genderSelect">
+            <div class="custom-select__trigger">
+              <span>Selecciona una opción</span>
+              <div class="arrow" aria-hidden="true"></div>
+            </div>
+            <div class="custom-options">
+              <span class="custom-option" data-value="hombre">Hombre</span>
+              <span class="custom-option" data-value="mujer">Mujer</span>
+              <span class="custom-option" data-value="otro">Otro</span>
+            </div>
+          </div>
+          <select id="genderSelect" required class="hidden-select">
+            <option value="">Selecciona una opción</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <button type="button" class="next-btn" id="toStep3" disabled>
+            <span>Continuar</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+      </section>
+      <!-- Pantalla 3: Selección de profesión -->
+      <section class="form-step" id="step-3">
+        <h2>¿Cuál es tu área de profesión?</h2>
+        <div class="custom-select-wrapper">
+          <div class="custom-select" data-select="professionSelect">
+            <div class="custom-select__trigger">
+              <span>Selecciona una opción</span>
+              <div class="arrow" aria-hidden="true"></div>
+            </div>
+            <div class="custom-options">
+              <!-- Static options removed as dynamic loading is functional -->
+            </div>
+          </div>
+          <select id="professionSelect" required class="hidden-select">
+            <option value="">Selecciona una opción</option>
+          </select>
+        </div>
+        <button type="button" class="next-btn" id="toStep4" disabled>
+            <span>Continuar</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+      </section>
+      <!-- Pantalla 4: Selección de nivel de formación -->
+      <section class="form-step" id="step-4">
+        <h2>¿Qué nivel de formación quieres hacer?</h2>
+        <div class="custom-select-wrapper">
+          <div class="custom-select" data-select="postgraduateSelect">
+            <div class="custom-select__trigger">
+              <span>Selecciona un nivel de formación</span>
+              <div class="arrow" aria-hidden="true"></div>
+            </div>
+            <div class="custom-options">
+              <!-- Opciones dinámicas cargadas desde obtener_formacion.js -->
+            </div>
+          </div>
+          <select id="postgraduateSelect" required class="hidden-select">
+            <option value="">Selecciona un nivel de formación</option>
+            <!-- Opciones dinámicas cargadas desde obtener_formacion.js -->
+          </select>
+        </div>
+        <button type="button" class="next-btn" id="toStep5" disabled>
+            <span>Continuar</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+      </section>
+      
+      <!-- Pantalla 5: Razón principal para estudiar -->
+      <section class="form-step" id="step-5">
+        <h2>¿Cuál es la razón principal por la que deseas estudiar tu nivel de formación seleccionado?</h2>
+        <p class="subtitle-small">Define tus objetivos para que tu aprendizaje sea más eficaz</p>
+        
+        <div class="checkbox-options">
+          <label class="checkbox-option">
+            <input type="checkbox" name="razon" value="crecimiento-profesional">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 5/1.svg" alt="Crecimiento profesional icono" width="24" height="24" />
+              <span class="checkbox-text">Crecimiento profesional y mejores oportunidades.</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="razon" value="mejorar-conocimiento">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 5/2.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Mejorar mi conocimiento y actualización académica.</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="razon" value="explorar-areas">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 5/3.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Explorar nuevas áreas dentro de mi profesión</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="razon" value="no-seguro">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 5/4.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">No estoy seguro/a todavía.</span>
+            </div>
+          </label>
+        </div>
+
+        <button type="button" class="next-btn" id="toStep6" disabled>
+            <span>Continuar</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+      </section>
+
+      <!-- Pantalla 6: Seguridad sobre estudiar el nivel de formación seleccionado -->
+      <section class="form-step" id="step-6">
+        <h2>¿Qué tan seguro estás<br>de querer estudiar<br>tu nivel de formación seleccionado?</h2>
+        <div class="checkbox-options">
+          <label class="checkbox-option">
+            <input type="checkbox" name="seguridad" value="completamente-seguro">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 6/1.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Completamente seguro, siempre ha sido mi sueño</span>
+            </div>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="seguridad" value="bastante-seguro">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 6/2.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Bastante seguro, pero aún tengo algunas dudas.</span>
+            </div>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="seguridad" value="algo-inseguro">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 6/3.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Algo inseguro, me gustaría explorar más opciones.</span>
+            </div>
+          </label>
+          <label class="checkbox-option">
+            <input type="checkbox" name="seguridad" value="no-estoy-seguro">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 6/4.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">No estoy seguro, solo quiero conocer más.</span>
+            </div>
+          </label>
+        </div>
+        <button type="button" class="next-btn" id="toStep7" disabled>
+          <span>Continuar</span>
+          <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+        </button>
+      </section>
+
+      <!-- Pantalla 7: Aprende con los mejores -->
+      <section class="form-step" id="step-7">
+        <div class="logo"></div>
+        <h2>Aprende con los mejores</h2>
+        <p class="subtitle">Han estado en los casos más impactantes y ahora compartirán contigo la experiencia que transforma vidas.</p>
+
+        <div style="display:flex; justify-content:center; margin-bottom:32px;">
+          <button type="button" id="toStep8" class="image-btn">
+            <img src="assets/img/test4.png" alt="Profesores expertos de la Universidad El Bosque">
+          </button>
+        </div>
+      </section>
+
+      <!-- Pantalla 8: Manejo de presión y estrés -->
+      <section class="form-step" id="step-8">
+        <h2>¿Cómo manejas<br>la presión y el estrés?</h2>
+        <div class="checkbox-options">
+          <label class="checkbox-option">
+            <input type="checkbox" name="stress" value="muy-bien">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 7/1.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Muy bien, me motiva a mejorar.</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="stress" value="con-esfuerzo">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 7/2.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Lo manejo con esfuerzo, pero a veces me supera.</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="stress" value="me-cuesta">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 7/3.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Me cuesta controlarlo y me desmotiva.</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="stress" value="me-paraliza">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 7/4.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Me paraliza y me hace dudar de mis habilidades.</span>
+            </div>
+          </label>
+        </div>
+
+        <button type="button" class="next-btn" id="toStep9" disabled>
+          <span>Continuar</span>
+          <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+        </button>
+      </section>
+
+      <!-- Pantalla 9: Comodidad con estudio y memorización -->
+      <section class="form-step" id="step-9">
+        <h2>¿Qué tan cómodo te sientes<br>con el estudio constante<br>y la memorización?</h2>
+        <div class="checkbox-options">
+          <label class="checkbox-option">
+            <input type="checkbox" name="study-comfort" value="muy-comodo">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 9/1.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Muy cómodo, disfruto aprender cosas nuevas.</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="study-comfort" value="me-gusta-aprender">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 9/2.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Me gusta aprender, pero a veces me cuesta memorizar.</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="study-comfort" value="prefiero-practica">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 9/3.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Prefiero aprender con práctica, no tanto con teoría.</span>
+            </div>
+          </label>
+
+          <label class="checkbox-option">
+            <input type="checkbox" name="study-comfort" value="dificil-concentrarme">
+            <span class="checkbox-custom"></span>
+            <div class="checkbox-content">
+              <img class="checkbox-icon" src="assets/svg/pantalla 9/4.svg" alt="Icono" width="24" height="24" />
+              <span class="checkbox-text">Me cuesta concentrarme en el estudio.</span>
+            </div>
+          </label>
+        </div>
+
+        <button type="button" class="next-btn" id="toStep10" disabled>
+          <span>Continuar</span>
+          <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+        </button>
+      </section>
+
+        <!-- Pantalla 10: Método de enseñanza que te reta y te hace brillar -->
+        <section class="form-step" id="step-10">
+          <div class="logo"></div>
+          <h2>Un método de enseñanza<br>que te reta y te hace brillar</h2>
+          <p class="subtitle-small" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">
+            Aquí no solo aprendes, vives lo aprendido. Te pondrás a prueba en casos reales, tomarás decisiones y descubrirás de qué estás hecho mientras te preparas para triunfar.
+          </p>
+          <div style="display:flex; justify-content:center; margin-bottom:32px;">
+            <button type="button" id="toStep11" class="image-btn">
+              <img src="assets/img/test1.png" alt="Método de enseñanza - Universidad El Bosque">
+            </button>
+          </div>
+        </section>
+
+        <!-- Pantalla 11: Metodología de aprendizaje preferida -->
+        <section class="form-step" id="step-11">
+          <h2>¿Qué metodología de aprendizaje prefieres?</h2>
+          <div class="checkbox-options">
+            <label class="checkbox-option">
+              <input type="checkbox" name="learning-method" value="practica-casos">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 11/1.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Práctica basada en casos reales y simulaciones.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="learning-method" value="teorico-casos">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 11/2.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Aprendizaje teórico con discusión de casos reales.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="learning-method" value="investigacion-academica">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 11/3.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Investigación y desarrollo académico.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="learning-method" value="sin-preferencia">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 11/4.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">No tengo preferencia.</span>
+              </div>
+            </label>
+          </div>
+
+          <button type="button" class="next-btn" id="toStep12" disabled>
+            <span>Continuar</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 12: Modalidad preferida del posgrado -->
+        <section class="form-step" id="step-12">
+          <h2>¿Cómo prefieres que sea la modalidad del posgrado?</h2>
+          <div class="checkbox-options">
+            <label class="checkbox-option">
+              <input type="checkbox" name="modality" value="1">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 12/1.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Presencial con interacción directa.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="modality" value="4">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 12/2.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Híbrido (presencial y virtual).</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="modality" value="3">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 12/3.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">100% virtual por flexibilidad.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="modality" value="2">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 12/4.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">No tengo preferencia.</span>
+              </div>
+            </label>
+          </div>
+
+          <button type="button" class="next-btn" id="toStep13" disabled>
+            <span>Continuar</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 13: Tecnología de otro nivel -->
+        <section class="form-step" id="step-13">
+          <div class="logo"></div>
+          <h2>Tecnología de otro nivel</h2>
+          <p class="subtitle" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">Vive la emoción de aprender con tecnología que pocos han probado. Simuladores, equipos de última generación y realidad virtual que te llevan a entrenarte como si ya estuvieras en tu profesión.</p>
+          <div style="display:flex; justify-content:center; margin-bottom:32px;">
+            <button type="button" id="toStep14" class="image-btn">
+              <img src="assets/img/test2.png" alt="Tecnología VR - Universidad El Bosque">
+            </button>
+          </div>
+        </section>
+
+        <!-- Pantalla 14: Desafíos al considerar un posgrado -->
+        <section class="form-step" id="step-14">
+          <h2>¿Cuál es el mayor desafío que enfrentas al considerar un posgrado?</h2>
+          
+          <div class="checkbox-options">
+            <label class="checkbox-option">
+              <input type="checkbox" name="challenge" value="equilibrar-estudio-trabajo">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 14/1.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Equilibrar el estudio con mi trabajo actual</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="challenge" value="costo-financiamiento">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 14/2.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">El costo y las opciones de financiamiento</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="challenge" value="adaptarme-metodologias">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 14/3.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Adaptarme a las nuevas metodologías de aprendizaje</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="challenge" value="encontrar-especializacion">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 14/4.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Encontrar una especialización que realmente me apasione</span>
+              </div>
+            </label>
+          </div>
+
+          <button type="button" class="next-btn" id="toStep15" disabled>
+            <span>Continuar</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 15: ¿Cómo te imaginas en 10 años? -->
+        <section class="form-step" id="step-15">
+          <h2>¿Cómo te imaginas<br>en 10 años?</h2>
+          
+          <div class="checkbox-options">
+            <label class="checkbox-option">
+              <input type="checkbox" name="future-vision" value="carrera-apasione">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 15/1.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Desarrollándome en una carrera que me apasione.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="future-vision" value="liderando-proyectos">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 15/2.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Liderando proyectos o equipos en mi campo.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="future-vision" value="emprendiendo">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 15/3.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Emprendiendo o trabajando en algo propio.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="future-vision" value="aprendizaje-continuo">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 15/4.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Siguiendo en constante aprendizaje y evolución.</span>
+              </div>
+            </label>
+          </div>
+
+          <button type="button" class="next-btn" id="toStep16" disabled>
+            <span>CONTINUAR</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 16: Profesores que te inspiran y te motivan -->
+        <section class="form-step" id="step-16">
+          <div class="logo"></div>
+          <h2>Profesores que te inspiran<br>y te motivan.</h2>
+          <p class="subtitle" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">No son simples docentes: son doctores, investigadores y expertos que ya lograron lo que tú sueñas. Ellos te mostrarán el camino y te compartirán los secretos para alcanzar tus metas.</p>
+          <div style="display:flex; justify-content:center; margin-bottom:32px;">
+            <button type="button" id="toStep17" class="image-btn">
+              <img src="assets/img/test3.png" alt="Profesores inspiradores de la Universidad El Bosque">
+            </button>
+          </div>
+        </section>
+
+        <!-- Pantalla 17: ¿Qué harías si la maestría resulta ser más difícil de lo esperado? -->
+        <section class="form-step" id="step-17">
+          <h2>¿Qué harías si la maestría<br>resulta ser más difícil<br>de lo esperado?</h2>
+          
+          <div class="checkbox-options">
+            <label class="checkbox-option">
+              <input type="checkbox" name="difficulty-response" value="seguir-adelante">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 17/1.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Seguiría adelante y buscaría ayuda si es necesario.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="difficulty-response" value="esforzarse-considerar">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 17/2.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Me esforzaría, pero si es muy difícil consideraría otra especialidad.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="difficulty-response" value="buscar-alternativa">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 17/3.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Buscaría otra alternativa en mi sector.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="difficulty-response" value="cambiar-maestria">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 17/4.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Pensaría en cambiar de maestría.</span>
+              </div>
+            </label>
+          </div>
+
+          <button type="button" class="next-btn" id="toStep18" disabled>
+            <span>CONTINUAR</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 18: Fecha de inicio -->
+        <section class="form-step" id="step-18">
+          <h2>¿Para cuándo tienes<br>previsto iniciar<br>tus estudios?</h2>
+          
+          <!-- Input oculto para el valor del calendario -->
+          <input type="hidden" id="fecha_seleccionada" name="fecha_inicio" value="">
+
+          <div class="calendar-container" role="group" aria-labelledby="displayDate">
+            <div class="calendar-header" id="calendarHeader">
+              <span id="displayDate">Elige una fecha</span>
+              <span class="calendar-arrow" id="calendarArrow">▼</span>
+            </div>
+            <div class="calendar-body" id="calendarBody">
+              <div class="calendar-title">
+                <button type="button" class="nav-button" id="prevMonth">‹</button>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <select class="year-selector" id="yearSelector"></select>
+                  <span id="monthName">Agosto</span>
+                </div>
+                <button type="button" class="nav-button" id="nextMonth">›</button>
+              </div>
+              <div class="calendar-weekdays">
+                <div>D</div>
+                <div>L</div>
+                <div>M</div>
+                <div>M</div>
+                <div>J</div>
+                <div>V</div>
+                <div>S</div>
+              </div>
+              <div class="calendar-days" id="calendarDays"></div>
+            </div>
+          </div>
+
+          <button type="button" class="next-btn" id="toStep19" disabled>
+            <span>CONTINUAR</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 19: Financiamiento de estudios -->
+        <section class="form-step" id="step-19">
+          <h2>¿Cómo planeas<br>financiar tus estudios?</h2>
+          
+          <div class="checkbox-options">
+            <label class="checkbox-option">
+              <input type="checkbox" name="financing" value="ahorros-personales">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 19/1.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Ahorros personales o familiares.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="financing" value="credito-educativo">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 19/2.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Crédito educativo con una entidad financiera.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="financing" value="becas-apoyos">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 19/3.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Becas y apoyos económicos de la universidad.</span>
+              </div>
+            </label>
+
+            <label class="checkbox-option">
+              <input type="checkbox" name="financing" value="apoyo-empresa">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-content">
+                <img class="checkbox-icon" src="assets/svg/pantalla 19/4.svg" alt="Icono" width="24" height="24" />
+                <span class="checkbox-text">Apoyo de mi empresa.</span>
+              </div>
+            </label>
+          </div>
+
+          <button type="button" class="next-btn" id="toStep20" disabled>
+            <span>CONTINUAR</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 20: Aprende con los mejores -->
+        <section class="form-step" id="step-20">
+          <div class="logo"></div>
+          <h2>Aprende con los mejores</h2>
+          <p class="subtitle" style="text-align: center; max-width: 90%; margin-left: auto; margin-right: auto;">
+            Tus profesores no solo son expertos,<br>
+            sino que tienen experiencia en el campo real.<br>
+            <strong>¡Algunos incluso han trabajado<br>
+            en los casos más impactantes!</strong>
+          </p>
+          <div style="display:flex; justify-content:center; margin-bottom:32px;">
+            <button type="button" id="toStep21" class="image-btn">
+              <img src="assets/img/test4.png" alt="Profesores expertos de la Universidad El Bosque">
+            </button>
+          </div>
+        </section>
+
+        <!-- Pantalla 21: Datos de contacto -->
+        <section class="form-step" id="step-21">
+          <h2>¡Ya casi terminamos!<br>Déjanos tus datos de contacto</h2>
+          
+          <div class="contact-form">
+            <div class="form-group">
+              <label for="nombre" class="form-label">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Escribe tu nombre completo" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="ejemplo@correo.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="celular" class="form-label">Número de celular</label>
+              <input type="tel" id="celular" name="celular" class="form-input" placeholder="Ej: 3001234567" maxlength="20" autocomplete="tel" required>
+            </div>
+          </div>
+
+          <button type="button" class="next-btn submit-btn" id="submitForm" disabled>
+            <span>ENVIAR</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Enviar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 22: Carga/Procesamiento -->
+        <section class="form-step" id="step-22">
+          <div class="logo" style="margin-bottom: 32px;"></div>
+          
+          <h2>Un momento</h2>
+          <p class="subtitle">estamos buscando los posgrados<br>que se ajusten a tu perfil.</p>
+          
+          <!-- GIF de carga -->
+          <div id="loadingGifContainer" style="display:flex; justify-content:center; margin-bottom:32px;">
+            <img src="assets/gif/loading1.gif" alt="Cargando..." style="width: 200px; height: 200px; max-width: 90%; height: auto; object-fit: contain;">
+          </div>
+          
+          <!-- Botón que aparece después de 8 segundos -->
+          <button type="button" class="next-btn btn-orange" id="toStep23">
+            <span>CONTINUAR</span>
+            <img src="assets/svg/arrow-right.svg" class="arrow-icon" alt="Continuar" aria-hidden="true">
+          </button>
+        </section>
+
+        <!-- Pantalla 23: Resultados de programas -->
+        <section class="form-step" id="step-23">
+          <div class="step-23-header">
+            <h2 class="results-title">Estos son<br>los posgrados que<br>encontramos para ti.</h2>
+          </div>
+          
+          <div id="programResultsContainer" class="programs-container">
+            <!-- Los programas se cargarán dinámicamente aquí -->
+          </div>
+        </section>
+    </form>
+  </main>
+
+  <!-- Footer global reutilizable para todas las pantallas -->
+  <footer class="form-footer">
+    <p class="terms-text">
+      Al continuar, usted acepta las condiciones del servicio<br>
+      y la Pólitica de privacidad. Por favor, léalas antes de continuar.
+    </p>
+  </footer>
+
+  <script src="js/obtener_profesiones.js"></script>
+  <script src="js/obtener_formacion.js"></script>
+  <script src="js/cargar_programas.js"></script>
+  <script src="js/programa_whatsapp.js"></script>
+  <script src="js/obtener_programas.js"></script>
+  <script src="js/titulo_dinamico.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

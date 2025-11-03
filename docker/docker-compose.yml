@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mariadb:10.6
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: test_posgrados_ubosque
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+    command: --innodb-buffer-pool-size=128M --innodb-log-file-size=16M --innodb-flush-method=fsync --explicit-defaults-for-timestamp=1
+    ports:
+      - "3308:3306"  # Puerto local 3308 → Puerto del contenedor 3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+      - ./mysql-config/my.cnf:/etc/mysql/conf.d/custom.cnf
+    networks:
+      - app-network
+
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+    driver: bridge
